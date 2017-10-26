@@ -13,6 +13,7 @@ public class Health {
     @Test
     public void canBeObtained() {
         TimingsFacade timingsFacade = new TimingsFacade();
+
         HealthStatus healthStatus = timingsFacade.getHealth();
         LOG.info(healthStatus.toString());
     }

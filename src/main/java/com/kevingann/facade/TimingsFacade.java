@@ -1,5 +1,7 @@
 package com.kevingann.facade;
 
+import com.kevingann.beans.cicd.injectjs.InjectJSResponse;
+import com.kevingann.beans.cicd.injectjs.Model;
 import com.kevingann.beans.home.HealthStatus;
 import com.kevingann.util.ConfigUtil;
 import io.restassured.RestAssured;
@@ -18,7 +20,7 @@ public class TimingsFacade {
     private static final Logger LOG = LoggerFactory.getLogger(TimingsFacade.class);
 
     private static final String HEALTH_PATH = "/home";
-    private static final String PATH = "/v2/api/cicd/";
+    private static final String INJECTJS_PATH = "/v2/api/cicd/injectjs";
 
     public TimingsFacade() {
         RestAssured.defaultParser = Parser.JSON;
@@ -37,6 +39,31 @@ public class TimingsFacade {
                 as(HealthStatus.class);
 
         // @formatter:on
+    }
+
+    public InjectJSResponse getInjectJs(Model model) {
+        // @formatter:off
+
+        return given().
+                spec(getRequestSpecification(model)).
+                expect().
+                response().
+                statusCode(200).
+                when().
+                post(ConfigUtil.getUri(INJECTJS_PATH)).
+                andReturn().
+                as(InjectJSResponse.class);
+
+
+        // @formatter:on
+    }
+
+    private RequestSpecification getRequestSpecification(Model model) {
+        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setBody(model);
+        requestSpecBuilder.setContentType(ContentType.JSON);
+        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification() {
