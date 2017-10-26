@@ -7,6 +7,15 @@
     <version>1.0-SNAPSHOT</version>
     <name>timings-client</name>
     <url>http://maven.apache.org</url>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.surefire.version>2.20.1</maven.surefire.version>
+        <maven.failsafe.version>2.20.1</maven.failsafe.version>
+        <maven.surefire.rerun.count>5</maven.surefire.rerun.count>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
