@@ -1,6 +1,6 @@
 package com.kevingann;
 
-import com.kevingann.beans.health.HealthStatus;
+import com.kevingann.beans.home.HealthStatus;
 import com.kevingann.facade.TimingsFacade;
 import org.junit.Test;
 import org.slf4j.Logger;

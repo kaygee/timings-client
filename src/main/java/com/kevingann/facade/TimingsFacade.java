@@ -1,10 +1,12 @@
 package com.kevingann.facade;
 
-import com.kevingann.beans.health.HealthStatus;
+import com.kevingann.beans.home.HealthStatus;
 import com.kevingann.util.ConfigUtil;
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.ErrorLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.parsing.Parser;
 import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +17,12 @@ public class TimingsFacade {
 
     private static final Logger LOG = LoggerFactory.getLogger(TimingsFacade.class);
 
-    private static final String HEALTH_PATH = "/health";
+    private static final String HEALTH_PATH = "/home";
     private static final String PATH = "/v2/api/cicd/";
+
+    public TimingsFacade() {
+        RestAssured.defaultParser = Parser.JSON;
+    }
 
     public HealthStatus getHealth() {
         // @formatter:off

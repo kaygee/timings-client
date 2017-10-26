@@ -1,4 +1,4 @@
-package com.kevingann.beans.health;
+package com.kevingann.beans.home;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
