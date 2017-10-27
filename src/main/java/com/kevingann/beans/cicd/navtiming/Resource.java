@@ -7,21 +7,21 @@ public class Resource {
 
     private String name;
     private String entryType;
-    private double startTime;
-    private double duration;
+    private Double startTime;
+    private Double duration;
     private String initiatorType;
-    private double workerStart;
-    private double redirectStart;
-    private double redirectEnd;
-    private double fetchStart;
-    private double domainLookupStart;
-    private double domainLookupEnd;
-    private double connectStart;
-    private double connectEnd;
-    private double secureConnectionStart;
-    private double requestStart;
-    private double responseStart;
-    private double responseEnd;
+    private Double workerStart;
+    private Double redirectStart;
+    private Double redirectEnd;
+    private Double fetchStart;
+    private Double domainLookupStart;
+    private Double domainLookupEnd;
+    private Double connectStart;
+    private Double connectEnd;
+    private Double secureConnectionStart;
+    private Double requestStart;
+    private Double responseStart;
+    private Double responseEnd;
     private long transferSize;
     private long encodedBodySize;
     private long decodedBodySize;
@@ -54,20 +54,20 @@ public class Resource {
         private String name;
         private String entryType;
         private String initiatorType;
-        private double startTime;
-        private double duration;
-        private double workerStart;
-        private double redirectStart;
-        private double redirectEnd;
-        private double fetchStart;
-        private double domainLookupStart;
-        private double domainLookupEnd;
-        private double connectStart;
-        private double connectEnd;
-        private double secureConnectionStart;
-        private double requestStart;
-        private double responseStart;
-        private double responseEnd;
+        private Double startTime;
+        private Double duration;
+        private Double workerStart;
+        private Double redirectStart;
+        private Double redirectEnd;
+        private Double fetchStart;
+        private Double domainLookupStart;
+        private Double domainLookupEnd;
+        private Double connectStart;
+        private Double connectEnd;
+        private Double secureConnectionStart;
+        private Double requestStart;
+        private Double responseStart;
+        private Double responseEnd;
         private long transferSize;
         private long encodedBodySize;
         private long decodedBodySize;
@@ -87,73 +87,73 @@ public class Resource {
             return this;
         }
 
-        public Builder responseEnd(double responseEnd) {
+        public Builder responseEnd(Double responseEnd) {
             this.responseEnd = responseEnd;
             return this;
         }
 
-        public Builder responseStart(double responseStart) {
+        public Builder responseStart(Double responseStart) {
             this.responseStart = responseStart;
             return this;
         }
 
-        public Builder requestStart(double requestStart) {
+        public Builder requestStart(Double requestStart) {
             this.requestStart = requestStart;
             return this;
         }
 
-        public Builder secureConnectionStart(double secureConnectionStart) {
+        public Builder secureConnectionStart(Double secureConnectionStart) {
             this.secureConnectionStart = secureConnectionStart;
             return this;
         }
 
-        public Builder connectEnd(double connectEnd) {
+        public Builder connectEnd(Double connectEnd) {
             this.connectEnd = connectEnd;
             return this;
         }
 
 
-        public Builder connectStart(double connectStart) {
+        public Builder connectStart(Double connectStart) {
             this.connectStart = connectStart;
             return this;
         }
 
-        public Builder domainLookupEnd(double domainLookupEnd) {
+        public Builder domainLookupEnd(Double domainLookupEnd) {
             this.domainLookupEnd = domainLookupEnd;
             return this;
         }
 
-        public Builder domainLookupStart(double domainLookupStart) {
+        public Builder domainLookupStart(Double domainLookupStart) {
             this.domainLookupStart = domainLookupStart;
             return this;
         }
 
-        public Builder fetchStart(double fetchStart) {
+        public Builder fetchStart(Double fetchStart) {
             this.fetchStart = fetchStart;
             return this;
         }
 
-        public Builder redirectEnd(double redirectEnd) {
+        public Builder redirectEnd(Double redirectEnd) {
             this.redirectEnd = redirectEnd;
             return this;
         }
 
-        public Builder redirectStart(double redirectStart) {
+        public Builder redirectStart(Double redirectStart) {
             this.redirectStart = redirectStart;
             return this;
         }
 
-        public Builder workerStart(double workerStart) {
+        public Builder workerStart(Double workerStart) {
             this.workerStart = workerStart;
             return this;
         }
 
-        public Builder duration(double duration) {
+        public Builder duration(Double duration) {
             this.duration = duration;
             return this;
         }
 
-        public Builder startTime(double startTime) {
+        public Builder startTime(Double startTime) {
             this.startTime = startTime;
             return this;
         }
@@ -186,11 +186,11 @@ public class Resource {
         return entryType;
     }
 
-    public double getStartTime() {
+    public Double getStartTime() {
         return startTime;
     }
 
-    public double getDuration() {
+    public Double getDuration() {
         return duration;
     }
 
@@ -198,51 +198,51 @@ public class Resource {
         return initiatorType;
     }
 
-    public double getWorkerStart() {
+    public Double getWorkerStart() {
         return workerStart;
     }
 
-    public double getRedirectStart() {
+    public Double getRedirectStart() {
         return redirectStart;
     }
 
-    public double getRedirectEnd() {
+    public Double getRedirectEnd() {
         return redirectEnd;
     }
 
-    public double getFetchStart() {
+    public Double getFetchStart() {
         return fetchStart;
     }
 
-    public double getDomainLookupStart() {
+    public Double getDomainLookupStart() {
         return domainLookupStart;
     }
 
-    public double getDomainLookupEnd() {
+    public Double getDomainLookupEnd() {
         return domainLookupEnd;
     }
 
-    public double getConnectStart() {
+    public Double getConnectStart() {
         return connectStart;
     }
 
-    public double getConnectEnd() {
+    public Double getConnectEnd() {
         return connectEnd;
     }
 
-    public double getSecureConnectionStart() {
+    public Double getSecureConnectionStart() {
         return secureConnectionStart;
     }
 
-    public double getRequestStart() {
+    public Double getRequestStart() {
         return requestStart;
     }
 
-    public double getResponseStart() {
+    public Double getResponseStart() {
         return responseStart;
     }
 
-    public double getResponseEnd() {
+    public Double getResponseEnd() {
         return responseEnd;
     }
 

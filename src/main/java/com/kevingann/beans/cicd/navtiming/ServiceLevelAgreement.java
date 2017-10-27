@@ -7,13 +7,13 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class ServiceLevelAgreement {
 
     @JsonProperty("pageLoadTime")
-    private long pageLoadTime;
+    private Long pageLoadTime;
 
-    public long getPageLoadTime() {
+    public Long getPageLoadTime() {
         return pageLoadTime;
     }
 
-    public void setPageLoadTime(long pageLoadTime) {
+    public void setPageLoadTime(Long pageLoadTime) {
         this.pageLoadTime = pageLoadTime;
     }
 

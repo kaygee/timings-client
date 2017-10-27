@@ -26,10 +26,10 @@ public class NavigationTimingAssertion {
         Timing timing = new Timing
                 .Builder()
                 .navigationStart(1496339132056L)
-                .unloadEventStart(0)
-                .unloadEventEnd(0)
-                .redirectStart(0)
-                .redirectEnd(0)
+                .unloadEventStart(0L)
+                .unloadEventEnd(0L)
+                .redirectStart(0L)
+                .redirectEnd(0L)
                 .fetchStart(1496339132120L)
                 .domainLookupStart(1496339132123L)
                 .domainLookupEnd(1496339132123L)
@@ -55,15 +55,15 @@ public class NavigationTimingAssertion {
                 .startTime(254.55)
                 .duration(28.064999999999998)
                 .initiatorType("link")
-                .workerStart(0)
-                .redirectStart(0)
-                .redirectEnd(0)
+                .workerStart(0.0)
+                .redirectStart(0.0)
+                .redirectEnd(0.0)
                 .fetchStart(254.55)
                 .domainLookupStart(254.55)
                 .domainLookupEnd(254.55)
                 .connectStart(254.55)
                 .connectEnd(254.55)
-                .secureConnectionStart(0)
+                .secureConnectionStart(0.0)
                 .requestStart(256.665)
                 .responseStart(279.37)
                 .responseEnd(282.615)
@@ -83,10 +83,8 @@ public class NavigationTimingAssertion {
                 .resources(resources)
                 .build();
 
-
         Flags flags = new Flags
                 .Builder()
-                // .assertRum(false)
                 .debug(false)
                 .esTrace(false)
                 .esCreate(false)
@@ -94,7 +92,7 @@ public class NavigationTimingAssertion {
                 .build();
 
         ServiceLevelAgreement sla = new ServiceLevelAgreement();
-        sla.setPageLoadTime(4000);
+        sla.setPageLoadTime(4000L);
 
         Include include = new Include();
         include.setUserAgentFamily("*hrome*");

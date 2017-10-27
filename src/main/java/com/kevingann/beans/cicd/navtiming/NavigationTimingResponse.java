@@ -8,10 +8,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class NavigationTimingResponse {
 
     @JsonProperty("resourceSaved")
-    private boolean resourceSaved;
+    private Boolean resourceSaved;
 
     @JsonProperty("esSaved")
-    private boolean elasticSearchSaved;
+    private Boolean elasticSearchSaved;
 
     @JsonProperty("esIndex")
     private String elasticSearchIndex;
@@ -29,7 +29,7 @@ public class NavigationTimingResponse {
     private long took;
 
     @JsonProperty("assert")
-    private boolean assertion;
+    private Boolean assertion;
 
     @JsonIgnore
     @JsonProperty("errorMsg")
@@ -63,7 +63,7 @@ public class NavigationTimingResponse {
         return took;
     }
 
-    public boolean isAssertion() {
+    public Boolean isAssertion() {
         return assertion;
     }
 
@@ -104,11 +104,11 @@ public class NavigationTimingResponse {
         return elasticSearchServer;
     }
 
-    public boolean isResourceSaved() {
+    public Boolean isResourceSaved() {
         return resourceSaved;
     }
 
-    public boolean isElasticSearchSaved() {
+    public Boolean isElasticSearchSaved() {
         return elasticSearchSaved;
     }
 

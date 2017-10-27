@@ -1,19 +1,21 @@
 package com.kevingann.beans.cicd.navtiming;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.kevingann.beans.cicd.usertiming.Mark;
+import com.kevingann.beans.cicd.usertiming.Measure;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class InjectJS {
 
     @JsonProperty("time")
-    private long time;
+    private Long time;
 
     @JsonProperty("timing")
     private Timing timing;
 
     @JsonProperty("visualCompleteTime")
-    private long visualCompleteTime;
+    private Long visualCompleteTime;
 
     @JsonProperty("url")
     private String url;
@@ -21,23 +23,43 @@ public class InjectJS {
     @JsonProperty("resources")
     private Resource[] resources;
 
+    @JsonProperty("measureArray")
+    private Measure[] measures;
+
+    @JsonProperty("marks")
+    private Mark[] marks;
+
     public InjectJS(Builder builder) {
         this.time = builder.time;
         this.timing = builder.timing;
         this.visualCompleteTime = builder.visualCompleteTime;
         this.url = builder.url;
         this.resources = builder.resources;
+        this.measures = builder.measures;
+        this.marks = builder.marks;
     }
 
     public static class Builder {
 
-        private long time;
+        private Long time;
         private Timing timing;
-        private long visualCompleteTime;
+        private Long visualCompleteTime;
         private String url;
         private Resource[] resources;
+        private Measure[] measures;
+        private Mark[] marks;
 
-        public Builder time(long time) {
+        public Builder measures(Measure[] measures) {
+            this.measures = measures;
+            return this;
+        }
+
+        public Builder marks(Mark[] marks) {
+            this.marks = marks;
+            return this;
+        }
+
+        public Builder time(Long time) {
             this.time = time;
             return this;
         }
@@ -47,7 +69,7 @@ public class InjectJS {
             return this;
         }
 
-        public Builder visualCompleteTime(long visualCompleteTime) {
+        public Builder visualCompleteTime(Long visualCompleteTime) {
             this.visualCompleteTime = visualCompleteTime;
             return this;
         }
@@ -74,7 +96,7 @@ public class InjectJS {
 
     }
 
-    public long getTime() {
+    public Long getTime() {
         return time;
     }
 
@@ -82,7 +104,7 @@ public class InjectJS {
         return timing;
     }
 
-    public long getVisualCompleteTime() {
+    public Long getVisualCompleteTime() {
         return visualCompleteTime;
     }
 
@@ -92,6 +114,14 @@ public class InjectJS {
 
     public Resource[] getResources() {
         return resources;
+    }
+
+    public Measure[] getMeasures() {
+        return measures;
+    }
+
+    public Mark[] getMarks() {
+        return marks;
     }
 
     public String toString() {

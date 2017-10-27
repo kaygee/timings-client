@@ -13,16 +13,16 @@ public class Flags {
     //    private boolean assertRum;
 
     @JsonProperty("debug")
-    private boolean debug;
+    private Boolean debug;
 
     @JsonProperty("esTrace")
-    private boolean esTrace;
+    private Boolean esTrace;
 
     @JsonProperty("esCreate")
-    private boolean esCreate;
+    private Boolean esCreate;
 
     @JsonProperty("passOnFailedAssert")
-    private boolean passOnFailedAssert;
+    private Boolean passOnFailedAssert;
 
     public Flags(Builder builder) {
         //        this.assertRum = builder.assertRum;
@@ -34,32 +34,32 @@ public class Flags {
 
     public static class Builder {
         //        private boolean assertRum;
-        private boolean debug;
-        private boolean esTrace;
-        private boolean esCreate;
-        private boolean passOnFailedAssert;
+        private Boolean debug;
+        private Boolean esTrace;
+        private Boolean esCreate;
+        private Boolean passOnFailedAssert;
 
         //        public Builder assertRum(boolean assertRum) {
         //            this.assertRum = assertRum;
         //            return this;
         //        }
 
-        public Builder debug(boolean debug) {
+        public Builder debug(Boolean debug) {
             this.debug = debug;
             return this;
         }
 
-        public Builder esTrace(boolean esTrace) {
+        public Builder esTrace(Boolean esTrace) {
             this.esTrace = esTrace;
             return this;
         }
 
-        public Builder esCreate(boolean esCreate) {
+        public Builder esCreate(Boolean esCreate) {
             this.esCreate = esCreate;
             return this;
         }
 
-        public Builder passOnFailedAssert(boolean passOnFailedAssert) {
+        public Builder passOnFailedAssert(Boolean passOnFailedAssert) {
             this.passOnFailedAssert = passOnFailedAssert;
             return this;
         }
@@ -74,19 +74,19 @@ public class Flags {
     //        return assertRum;
     //    }
 
-    public boolean isDebug() {
+    public Boolean isDebug() {
         return debug;
     }
 
-    public boolean isEsTrace() {
+    public Boolean isEsTrace() {
         return esTrace;
     }
 
-    public boolean isEsCreate() {
+    public Boolean isEsCreate() {
         return esCreate;
     }
 
-    public boolean isPassOnFailedAssert() {
+    public Boolean isPassOnFailedAssert() {
         return passOnFailedAssert;
     }
 

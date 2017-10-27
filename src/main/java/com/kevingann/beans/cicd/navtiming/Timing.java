@@ -7,67 +7,67 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class Timing {
 
     @JsonProperty("navigationStart")
-    private long navigationStart;
+    private Long navigationStart;
 
     @JsonProperty("unloadEventStart")
-    private long unloadEventStart;
+    private Long unloadEventStart;
 
     @JsonProperty("unloadEventEnd")
-    private long unloadEventEnd;
+    private Long unloadEventEnd;
 
     @JsonProperty("redirectStart")
-    private long redirectStart;
+    private Long redirectStart;
 
     @JsonProperty("redirectEnd")
-    private long redirectEnd;
+    private Long redirectEnd;
 
     @JsonProperty("fetchStart")
-    private long fetchStart;
+    private Long fetchStart;
 
     @JsonProperty("domainLookupStart")
-    private long domainLookupStart;
+    private Long domainLookupStart;
 
     @JsonProperty("domainLookupEnd")
-    private long domainLookupEnd;
+    private Long domainLookupEnd;
 
     @JsonProperty("connectStart")
-    private long connectStart;
+    private Long connectStart;
 
     @JsonProperty("connectEnd")
-    private long connectEnd;
+    private Long connectEnd;
 
     @JsonProperty("secureConnectionStart")
-    private long secureConnectionStart;
+    private Long secureConnectionStart;
 
     @JsonProperty("requestStart")
-    private long requestStart;
+    private Long requestStart;
 
     @JsonProperty("responseStart")
-    private long responseStart;
+    private Long responseStart;
 
     @JsonProperty("responseEnd")
-    private long responseEnd;
+    private Long responseEnd;
 
     @JsonProperty("domLoading")
-    private long domLoading;
+    private Long domLoading;
 
     @JsonProperty("domInteractive")
-    private long domInteractive;
+    private Long domInteractive;
 
     @JsonProperty("domContentLoadedEventStart")
-    private long domContentLoadedEventStart;
+    private Long domContentLoadedEventStart;
 
     @JsonProperty("domContentLoadedEventEnd")
-    private long domContentLoadedEventEnd;
+    private Long domContentLoadedEventEnd;
 
     @JsonProperty("domComplete")
-    private long domComplete;
+    private Long domComplete;
 
     @JsonProperty("loadEventStart")
-    private long loadEventStart;
+    private Long loadEventStart;
 
     @JsonProperty("loadEventEnd")
-    private long loadEventEnd;
+    private Long loadEventEnd;
 
     public Timing(Builder builder) {
 
@@ -97,129 +97,129 @@ public class Timing {
 
     public static class Builder {
 
-        private long navigationStart;
-        private long unloadEventStart;
-        private long unloadEventEnd;
-        private long redirectStart;
-        private long redirectEnd;
-        private long fetchStart;
-        private long domainLookupStart;
-        private long domainLookupEnd;
-        private long connectStart;
-        private long connectEnd;
-        private long secureConnectionStart;
-        private long requestStart;
-        private long responseStart;
-        private long responseEnd;
-        private long domLoading;
-        private long domInteractive;
-        private long domContentLoadedEventStart;
-        private long domContentLoadedEventEnd;
-        private long domComplete;
-        private long loadEventStart;
-        private long loadEventEnd;
+        private Long navigationStart;
+        private Long unloadEventStart;
+        private Long unloadEventEnd;
+        private Long redirectStart;
+        private Long redirectEnd;
+        private Long fetchStart;
+        private Long domainLookupStart;
+        private Long domainLookupEnd;
+        private Long connectStart;
+        private Long connectEnd;
+        private Long secureConnectionStart;
+        private Long requestStart;
+        private Long responseStart;
+        private Long responseEnd;
+        private Long domLoading;
+        private Long domInteractive;
+        private Long domContentLoadedEventStart;
+        private Long domContentLoadedEventEnd;
+        private Long domComplete;
+        private Long loadEventStart;
+        private Long loadEventEnd;
 
-        public Builder navigationStart(long navigationStart) {
+        public Builder navigationStart(Long navigationStart) {
             this.navigationStart = navigationStart;
             return this;
         }
 
-        public Builder unloadEventStart(long unloadEventStart) {
+        public Builder unloadEventStart(Long unloadEventStart) {
             this.unloadEventStart = unloadEventStart;
             return this;
         }
 
-        public Builder unloadEventEnd(long unloadEventEnd) {
+        public Builder unloadEventEnd(Long unloadEventEnd) {
             this.unloadEventEnd = unloadEventEnd;
             return this;
         }
 
-        public Builder redirectStart(long redirectStart) {
+        public Builder redirectStart(Long redirectStart) {
             this.redirectStart = redirectStart;
             return this;
         }
 
-        public Builder redirectEnd(long redirectEnd) {
+        public Builder redirectEnd(Long redirectEnd) {
             this.redirectEnd = redirectEnd;
             return this;
         }
 
-        public Builder fetchStart(long fetchStart) {
+        public Builder fetchStart(Long fetchStart) {
             this.fetchStart = fetchStart;
             return this;
         }
 
-        public Builder domainLookupStart(long domainLookupStart) {
+        public Builder domainLookupStart(Long domainLookupStart) {
             this.domainLookupStart = domainLookupStart;
             return this;
         }
 
-        public Builder domainLookupEnd(long domainLookupEnd) {
+        public Builder domainLookupEnd(Long domainLookupEnd) {
             this.domainLookupEnd = domainLookupEnd;
             return this;
         }
 
-        public Builder connectStart(long connectStart) {
+        public Builder connectStart(Long connectStart) {
             this.connectStart = connectStart;
             return this;
         }
 
-        public Builder connectEnd(long connectEnd) {
+        public Builder connectEnd(Long connectEnd) {
             this.connectEnd = connectEnd;
             return this;
         }
 
-        public Builder secureConnectionStart(long secureConnectionStart) {
+        public Builder secureConnectionStart(Long secureConnectionStart) {
             this.secureConnectionStart = secureConnectionStart;
             return this;
         }
 
-        public Builder requestStart(long requestStart) {
+        public Builder requestStart(Long requestStart) {
             this.requestStart = requestStart;
             return this;
         }
 
-        public Builder responseStart(long responseStart) {
+        public Builder responseStart(Long responseStart) {
             this.responseStart = responseStart;
             return this;
         }
 
-        public Builder responseEnd(long responseEnd) {
+        public Builder responseEnd(Long responseEnd) {
             this.responseEnd = responseEnd;
             return this;
         }
 
-        public Builder domLoading(long domLoading) {
+        public Builder domLoading(Long domLoading) {
             this.domLoading = domLoading;
             return this;
         }
 
-        public Builder domInteractive(long domInteractive) {
+        public Builder domInteractive(Long domInteractive) {
             this.domInteractive = domInteractive;
             return this;
         }
 
-        public Builder domContentLoadedEventStart(long domContentLoadedEventStart) {
+        public Builder domContentLoadedEventStart(Long domContentLoadedEventStart) {
             this.domContentLoadedEventStart = domContentLoadedEventStart;
             return this;
         }
 
-        public Builder domContentLoadedEventEnd(long domContentLoadedEventEnd) {
+        public Builder domContentLoadedEventEnd(Long domContentLoadedEventEnd) {
             this.domContentLoadedEventEnd = domContentLoadedEventEnd;
             return this;
         }
 
-        public Builder domComplete(long domComplete) {
+        public Builder domComplete(Long domComplete) {
             this.domComplete = domComplete;
             return this;
         }
 
-        public Builder loadEventStart(long loadEventStart) {
+        public Builder loadEventStart(Long loadEventStart) {
             this.loadEventStart = loadEventStart;
             return this;
         }
 
-        public Builder loadEventEnd(long loadEventEnd) {
+        public Builder loadEventEnd(Long loadEventEnd) {
             this.loadEventEnd = loadEventEnd;
             return this;
         }
@@ -230,87 +230,87 @@ public class Timing {
 
     }
 
-    public long getNavigationStart() {
+    public Long getNavigationStart() {
         return navigationStart;
     }
 
-    public long getUnloadEventStart() {
+    public Long getUnloadEventStart() {
         return unloadEventStart;
     }
 
-    public long getUnloadEventEnd() {
+    public Long getUnloadEventEnd() {
         return unloadEventEnd;
     }
 
-    public long getRedirectStart() {
+    public Long getRedirectStart() {
         return redirectStart;
     }
 
-    public long getRedirectEnd() {
+    public Long getRedirectEnd() {
         return redirectEnd;
     }
 
-    public long getDomainLookupStart() {
+    public Long getDomainLookupStart() {
         return domainLookupStart;
     }
 
-    public long getDomainLookupEnd() {
+    public Long getDomainLookupEnd() {
         return domainLookupEnd;
     }
 
-    public long getConnectStart() {
+    public Long getConnectStart() {
         return connectStart;
     }
 
-    public long getConnectEnd() {
+    public Long getConnectEnd() {
         return connectEnd;
     }
 
-    public long getSecureConnectionStart() {
+    public Long getSecureConnectionStart() {
         return secureConnectionStart;
     }
 
-    public long getRequestStart() {
+    public Long getRequestStart() {
         return requestStart;
     }
 
-    public long getResponseStart() {
+    public Long getResponseStart() {
         return responseStart;
     }
 
-    public long getResponseEnd() {
+    public Long getResponseEnd() {
         return responseEnd;
     }
 
-    public long getDomLoading() {
+    public Long getDomLoading() {
         return domLoading;
     }
 
-    public long getDomInteractive() {
+    public Long getDomInteractive() {
         return domInteractive;
     }
 
-    public long getDomContentLoadedEventStart() {
+    public Long getDomContentLoadedEventStart() {
         return domContentLoadedEventStart;
     }
 
-    public long getDomContentLoadedEventEnd() {
+    public Long getDomContentLoadedEventEnd() {
         return domContentLoadedEventEnd;
     }
 
-    public long getDomComplete() {
+    public Long getDomComplete() {
         return domComplete;
     }
 
-    public long getLoadEventStart() {
+    public Long getLoadEventStart() {
         return loadEventStart;
     }
 
-    public long getLoadEventEnd() {
+    public Long getLoadEventEnd() {
         return loadEventEnd;
     }
 
-    public long getFetchStart() {
+    public Long getFetchStart() {
         return fetchStart;
     }
 

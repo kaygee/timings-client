@@ -1,13 +1,17 @@
 package com.kevingann.facade;
 
-import com.kevingann.beans.cicd.injectjs.InjectJSResponse;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kevingann.beans.cicd.injectjs.InjectJSRequest;
+import com.kevingann.beans.cicd.injectjs.InjectJSResponse;
 import com.kevingann.beans.cicd.navtiming.NavigationTimingRequest;
 import com.kevingann.beans.cicd.navtiming.NavigationTimingResponse;
+import com.kevingann.beans.cicd.usertiming.UserTimingRequest;
 import com.kevingann.beans.home.HealthStatus;
 import com.kevingann.util.ConfigUtil;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.config.RestAssuredConfig;
 import io.restassured.filter.log.ErrorLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
@@ -16,17 +20,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.config.ObjectMapperConfig.objectMapperConfig;
 
 public class TimingsFacade {
 
     private static final Logger LOG = LoggerFactory.getLogger(TimingsFacade.class);
 
-    private static final String HEALTH_PATH = "/home";
+    private static final String HEALTH_PATH = "/health";
     private static final String INJECTJS_PATH = "/v2/api/cicd/injectjs";
     private static final String NAVTIMING_PATH = "/v2/api/cicd/navtiming";
+    private static final String USERTIMING_PATH = "/v2/api/cicd/usertiming";
 
     public TimingsFacade() {
         RestAssured.defaultParser = Parser.JSON;
+
+        RestAssured.config = RestAssuredConfig.config().objectMapperConfig(objectMapperConfig()
+                .jackson2ObjectMapperFactory((aClass, s) -> {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+            return objectMapper;
+        }));
     }
 
     public HealthStatus getHealth() {
@@ -40,6 +53,22 @@ public class TimingsFacade {
                 get(ConfigUtil.getUri(HEALTH_PATH)).
                 andReturn().
                 as(HealthStatus.class);
+
+        // @formatter:on
+    }
+
+    public String getUserTiming(UserTimingRequest userTimingRequest) {
+        // @formatter:off
+
+        return given().
+                spec(getRequestSpecification(userTimingRequest)).
+                expect().
+                response().
+                statusCode(200).
+                when().
+                post(ConfigUtil.getUri(USERTIMING_PATH)).
+                andReturn().
+                asString();
 
         // @formatter:on
     }
@@ -74,6 +103,14 @@ public class TimingsFacade {
                 as(InjectJSResponse.class);
 
         // @formatter:on
+    }
+
+    private RequestSpecification getRequestSpecification(UserTimingRequest userTimingRequest) {
+        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setBody(userTimingRequest);
+        requestSpecBuilder.setContentType(ContentType.JSON);
+        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification(NavigationTimingRequest navigationTimingRequest) {

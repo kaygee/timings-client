@@ -12,6 +12,9 @@ public class Include {
     @JsonProperty("os_family")
     private String osFamily;
 
+    @JsonProperty("env_tester")
+    private String environmentTester;
+
     public String getUserAgentFamily() {
         return userAgentFamily;
     }
@@ -26,6 +29,14 @@ public class Include {
 
     public void setOsFamily(String osFamily) {
         this.osFamily = osFamily;
+    }
+
+    public String getEnvironmentTester() {
+        return environmentTester;
+    }
+
+    public void setEnvironmentTester(String environmentTester) {
+        this.environmentTester = environmentTester;
     }
 
     public String toString() {
