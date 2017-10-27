@@ -24,6 +24,9 @@ import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import static io.restassured.RestAssured.given;
 import static io.restassured.config.ObjectMapperConfig.objectMapperConfig;
 
@@ -140,6 +143,22 @@ public class TimingsFacade {
                 post(ConfigUtil.getUri(INJECTJS_PATH)).
                 andReturn().
                 as(InjectJSResponse.class);
+
+        // @formatter:on
+    }
+
+    public String getInjectJsCode(InjectJSRequest injectJSRequest) throws UnsupportedEncodingException {
+        // @formatter:off
+
+        return URLDecoder.decode(given().
+                spec(getRequestSpecification(injectJSRequest)).
+                expect().
+                response().
+                statusCode(200).
+                when().
+                post(ConfigUtil.getUri(INJECTJS_PATH)).
+                andReturn().
+                as(InjectJSResponse.class).getInjectCode(), "UTF-8");
 
         // @formatter:on
     }
