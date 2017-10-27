@@ -6,11 +6,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Flags {
 
-    /**
-     * TODO: This isn't allowed?
-     */
-    //    @JsonProperty("assertRum")
-    //    private boolean assertRum;
+    @JsonProperty("assertRum")
+    private Boolean assertRum;
 
     @JsonProperty("debug")
     private Boolean debug;
@@ -25,7 +22,7 @@ public class Flags {
     private Boolean passOnFailedAssert;
 
     public Flags(Builder builder) {
-        //        this.assertRum = builder.assertRum;
+        this.assertRum = builder.assertRum;
         this.debug = builder.debug;
         this.esTrace = builder.esTrace;
         this.esCreate = builder.esCreate;
@@ -33,16 +30,16 @@ public class Flags {
     }
 
     public static class Builder {
-        //        private boolean assertRum;
+        private Boolean assertRum;
         private Boolean debug;
         private Boolean esTrace;
         private Boolean esCreate;
         private Boolean passOnFailedAssert;
 
-        //        public Builder assertRum(boolean assertRum) {
-        //            this.assertRum = assertRum;
-        //            return this;
-        //        }
+        public Builder assertRum(Boolean assertRum) {
+            this.assertRum = assertRum;
+            return this;
+        }
 
         public Builder debug(Boolean debug) {
             this.debug = debug;
@@ -70,9 +67,9 @@ public class Flags {
 
     }
 
-    //    public boolean isAssertRum() {
-    //        return assertRum;
-    //    }
+    public Boolean isAssertRum() {
+        return assertRum;
+    }
 
     public Boolean isDebug() {
         return debug;
