@@ -1,6 +1,8 @@
 package com.kevingann.beans.cicd.navtiming;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Baseline {
 
@@ -60,6 +62,12 @@ public class Baseline {
             return this;
         }
 
+        /**
+         * TODO: Not allowed to be empty.
+         *
+         * @param searchUrl
+         * @return
+         */
         public Builder searchUrl(String searchUrl) {
             this.searchUrl = searchUrl;
             return this;
@@ -83,6 +91,10 @@ public class Baseline {
         public Baseline build() {
             return new Baseline(this);
         }
+    }
+
+    public String toString() {
+        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
     }
 
 }

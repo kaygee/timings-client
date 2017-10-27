@@ -6,13 +6,18 @@ import com.kevingann.beans.cicd.navtiming.Include;
 import com.kevingann.beans.cicd.navtiming.InjectJS;
 import com.kevingann.beans.cicd.navtiming.Log;
 import com.kevingann.beans.cicd.navtiming.NavigationTimingRequest;
+import com.kevingann.beans.cicd.navtiming.NavigationTimingResponse;
 import com.kevingann.beans.cicd.navtiming.Resource;
 import com.kevingann.beans.cicd.navtiming.ServiceLevelAgreement;
 import com.kevingann.beans.cicd.navtiming.Timing;
 import com.kevingann.facade.TimingsFacade;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class NavigationTimingAssertion {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Health.class);
 
     @Test
     public void canBeObtained() {
@@ -127,6 +132,7 @@ public class NavigationTimingAssertion {
         // @formatter:on
 
         TimingsFacade timingsFacade = new TimingsFacade();
-        timingsFacade.getNavigationTiming(navigationTimingRequest);
+        NavigationTimingResponse navigationTimingResponse = timingsFacade.getNavigationTiming(navigationTimingRequest);
+        LOG.info(navigationTimingResponse.toString());
     }
 }

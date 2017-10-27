@@ -44,7 +44,7 @@ public class TimingsFacade {
         // @formatter:on
     }
 
-    public String getNavigationTiming(NavigationTimingRequest navigationTimingRequest) {
+    public NavigationTimingResponse getNavigationTiming(NavigationTimingRequest navigationTimingRequest) {
         // @formatter:off
 
         return given().
@@ -54,8 +54,8 @@ public class TimingsFacade {
                 statusCode(200).
                 when().
                 post(ConfigUtil.getUri(NAVTIMING_PATH)).
-                andReturn().asString();
-//                as(NavigationTimingResponse.class);
+                andReturn().
+                as(NavigationTimingResponse.class);
 
         // @formatter:on
     }

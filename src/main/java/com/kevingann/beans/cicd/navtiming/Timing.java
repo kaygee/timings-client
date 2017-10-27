@@ -1,6 +1,8 @@
 package com.kevingann.beans.cicd.navtiming;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Timing {
 
@@ -312,5 +314,8 @@ public class Timing {
         return fetchStart;
     }
 
+    public String toString() {
+        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
+    }
 
 }
