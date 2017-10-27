@@ -8,6 +8,8 @@ import com.kevingann.beans.cicd.injectjs.InjectJSRequest;
 import com.kevingann.beans.cicd.injectjs.InjectJSResponse;
 import com.kevingann.beans.cicd.navtiming.NavigationTimingRequest;
 import com.kevingann.beans.cicd.navtiming.NavigationTimingResponse;
+import com.kevingann.beans.cicd.resources.ResourcesRequest;
+import com.kevingann.beans.cicd.resources.ResourcesResponse;
 import com.kevingann.beans.cicd.usertiming.UserTimingRequest;
 import com.kevingann.beans.cicd.usertiming.UserTimingResponse;
 import com.kevingann.beans.home.HealthStatus;
@@ -34,6 +36,7 @@ public class TimingsFacade {
     private static final String NAVTIMING_PATH = "/v2/api/cicd/navtiming";
     private static final String USERTIMING_PATH = "/v2/api/cicd/usertiming";
     private static final String APITIMING_PATH = "/v2/api/cicd/apitiming";
+    private static final String RESOURCES_PATH = "/v2/api/cicd/resources";
 
     public TimingsFacade() {
         RestAssured.defaultParser = Parser.JSON;
@@ -57,6 +60,22 @@ public class TimingsFacade {
                 get(ConfigUtil.getUri(HEALTH_PATH)).
                 andReturn().
                 as(HealthStatus.class);
+
+        // @formatter:on
+    }
+
+    public ResourcesResponse getResources(ResourcesRequest resourcesRequest) {
+        // @formatter:off
+
+        return given().
+                spec(getRequestSpecification(resourcesRequest)).
+                expect().
+                response().
+                statusCode(200).
+                when().
+                post(ConfigUtil.getUri(RESOURCES_PATH)).
+                andReturn().
+                as(ResourcesResponse.class);
 
         // @formatter:on
     }
@@ -123,6 +142,14 @@ public class TimingsFacade {
                 as(InjectJSResponse.class);
 
         // @formatter:on
+    }
+
+    private RequestSpecification getRequestSpecification(ResourcesRequest resourcesRequest) {
+        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setBody(resourcesRequest);
+        requestSpecBuilder.setContentType(ContentType.JSON);
+        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification(APITimingRequest apiTimingRequest) {

@@ -6,6 +6,8 @@ import com.kevingann.beans.cicd.common.Flags;
 import com.kevingann.beans.cicd.common.InjectJS;
 import com.kevingann.beans.cicd.common.Log;
 import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class UserTimingRequest {
 
@@ -70,7 +72,6 @@ public class UserTimingRequest {
             return new UserTimingRequest(this);
         }
 
-
     }
 
     public InjectJS getInjectJS() {
@@ -91,5 +92,9 @@ public class UserTimingRequest {
 
     public Log getLog() {
         return log;
+    }
+
+    public String toString() {
+        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
     }
 }
