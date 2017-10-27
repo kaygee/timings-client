@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class InjectJS {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Health.class);
+    private static final Logger LOG = LoggerFactory.getLogger(InjectJS.class);
 
     @Test
     public void canBeObtained() {

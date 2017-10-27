@@ -9,6 +9,7 @@ import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
 import com.kevingann.beans.cicd.common.Mark;
 import com.kevingann.beans.cicd.common.Measure;
 import com.kevingann.beans.cicd.usertiming.UserTimingRequest;
+import com.kevingann.beans.cicd.usertiming.UserTimingResponse;
 import com.kevingann.facade.TimingsFacade;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -16,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 public class UserTimingAssertion {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Health.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserTimingAssertion.class);
 
     @Test
     public void canBeObtained() {
@@ -96,7 +97,7 @@ public class UserTimingAssertion {
         // @formatter:on
 
         TimingsFacade timingsFacade = new TimingsFacade();
-        String response = timingsFacade.getUserTiming(userTimingRequest);
-        LOG.info(response);
+        UserTimingResponse userTimingResponse = timingsFacade.getUserTiming(userTimingRequest);
+        LOG.info(userTimingResponse.toString());
     }
 }

@@ -2,11 +2,14 @@ package com.kevingann.facade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kevingann.beans.cicd.apitiming.APITimingRequest;
+import com.kevingann.beans.cicd.apitiming.APITimingResponse;
 import com.kevingann.beans.cicd.injectjs.InjectJSRequest;
 import com.kevingann.beans.cicd.injectjs.InjectJSResponse;
 import com.kevingann.beans.cicd.navtiming.NavigationTimingRequest;
 import com.kevingann.beans.cicd.navtiming.NavigationTimingResponse;
 import com.kevingann.beans.cicd.usertiming.UserTimingRequest;
+import com.kevingann.beans.cicd.usertiming.UserTimingResponse;
 import com.kevingann.beans.home.HealthStatus;
 import com.kevingann.util.ConfigUtil;
 import io.restassured.RestAssured;
@@ -30,6 +33,7 @@ public class TimingsFacade {
     private static final String INJECTJS_PATH = "/v2/api/cicd/injectjs";
     private static final String NAVTIMING_PATH = "/v2/api/cicd/navtiming";
     private static final String USERTIMING_PATH = "/v2/api/cicd/usertiming";
+    private static final String APITIMING_PATH = "/v2/api/cicd/apitiming";
 
     public TimingsFacade() {
         RestAssured.defaultParser = Parser.JSON;
@@ -57,7 +61,23 @@ public class TimingsFacade {
         // @formatter:on
     }
 
-    public String getUserTiming(UserTimingRequest userTimingRequest) {
+    public APITimingResponse getAPITiming(APITimingRequest apiTimingRequest) {
+        // @formatter:off
+
+        return given().
+                spec(getRequestSpecification(apiTimingRequest)).
+                expect().
+                response().
+                statusCode(200).
+                when().
+                post(ConfigUtil.getUri(APITIMING_PATH)).
+                andReturn().
+                as(APITimingResponse.class);
+
+        // @formatter:on
+    }
+
+    public UserTimingResponse getUserTiming(UserTimingRequest userTimingRequest) {
         // @formatter:off
 
         return given().
@@ -68,7 +88,7 @@ public class TimingsFacade {
                 when().
                 post(ConfigUtil.getUri(USERTIMING_PATH)).
                 andReturn().
-                asString();
+                as(UserTimingResponse.class);
 
         // @formatter:on
     }
@@ -103,6 +123,14 @@ public class TimingsFacade {
                 as(InjectJSResponse.class);
 
         // @formatter:on
+    }
+
+    private RequestSpecification getRequestSpecification(APITimingRequest apiTimingRequest) {
+        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setBody(apiTimingRequest);
+        requestSpecBuilder.setContentType(ContentType.JSON);
+        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification(UserTimingRequest userTimingRequest) {

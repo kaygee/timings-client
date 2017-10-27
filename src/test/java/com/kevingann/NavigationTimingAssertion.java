@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 public class NavigationTimingAssertion {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Health.class);
+    private static final Logger LOG = LoggerFactory.getLogger(NavigationTimingAssertion.class);
 
     @Test
     public void canBeObtained() {

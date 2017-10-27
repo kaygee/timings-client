@@ -6,6 +6,12 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Timing {
 
+    @JsonProperty("startTime")
+    private Long startTime;
+
+    @JsonProperty("endTime")
+    private Long endTime;
+
     @JsonProperty("navigationStart")
     private Long navigationStart;
 
@@ -70,7 +76,8 @@ public class Timing {
     private Long loadEventEnd;
 
     public Timing(Builder builder) {
-
+        this.startTime = builder.startTime;
+        this.endTime = builder.endTime;
         this.navigationStart = builder.navigationStart;
         this.unloadEventStart = builder.unloadEventStart;
         this.unloadEventEnd = builder.unloadEventEnd;
@@ -92,11 +99,11 @@ public class Timing {
         this.domComplete = builder.domComplete;
         this.loadEventStart = builder.loadEventStart;
         this.loadEventEnd = builder.loadEventEnd;
-
     }
 
     public static class Builder {
-
+        private Long startTime;
+        private Long endTime;
         private Long navigationStart;
         private Long unloadEventStart;
         private Long unloadEventEnd;
@@ -118,6 +125,16 @@ public class Timing {
         private Long domComplete;
         private Long loadEventStart;
         private Long loadEventEnd;
+
+        public Builder startTime(Long startTime) {
+            this.startTime = startTime;
+            return this;
+        }
+
+        public Builder endTime(Long endTime) {
+            this.endTime = endTime;
+            return this;
+        }
 
         public Builder navigationStart(Long navigationStart) {
             this.navigationStart = navigationStart;
@@ -312,6 +329,14 @@ public class Timing {
 
     public Long getFetchStart() {
         return fetchStart;
+    }
+
+    public Long getStartTime() {
+        return startTime;
+    }
+
+    public Long getEndTime() {
+        return endTime;
     }
 
     public String toString() {
