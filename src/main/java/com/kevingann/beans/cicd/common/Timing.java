@@ -1,9 +1,13 @@
 package com.kevingann.beans.cicd.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+@JsonDeserialize(builder = Timing.Builder.class)
 public class Timing {
 
     @JsonProperty("startTime")
@@ -75,6 +79,10 @@ public class Timing {
     @JsonProperty("loadEventEnd")
     private Long loadEventEnd;
 
+    @JsonIgnore
+    @JsonProperty("toJSON")
+    private ToJSON toJson;
+
     public Timing(Builder builder) {
         this.startTime = builder.startTime;
         this.endTime = builder.endTime;
@@ -101,6 +109,7 @@ public class Timing {
         this.loadEventEnd = builder.loadEventEnd;
     }
 
+    @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "")
     public static class Builder {
         private Long startTime;
         private Long endTime;
@@ -125,6 +134,12 @@ public class Timing {
         private Long domComplete;
         private Long loadEventStart;
         private Long loadEventEnd;
+        private ToJSON toJSON;
+
+        public Builder toJSON(ToJSON toJSON) {
+            this.toJSON = toJSON;
+            return this;
+        }
 
         public Builder startTime(Long startTime) {
             this.startTime = startTime;
@@ -337,6 +352,106 @@ public class Timing {
 
     public Long getEndTime() {
         return endTime;
+    }
+
+    public ToJSON getToJson() {
+        return toJson;
+    }
+
+    public void setToJson(ToJSON toJson) {
+        this.toJson = toJson;
+    }
+
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(Long endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setNavigationStart(Long navigationStart) {
+        this.navigationStart = navigationStart;
+    }
+
+    public void setUnloadEventStart(Long unloadEventStart) {
+        this.unloadEventStart = unloadEventStart;
+    }
+
+    public void setUnloadEventEnd(Long unloadEventEnd) {
+        this.unloadEventEnd = unloadEventEnd;
+    }
+
+    public void setRedirectStart(Long redirectStart) {
+        this.redirectStart = redirectStart;
+    }
+
+    public void setRedirectEnd(Long redirectEnd) {
+        this.redirectEnd = redirectEnd;
+    }
+
+    public void setFetchStart(Long fetchStart) {
+        this.fetchStart = fetchStart;
+    }
+
+    public void setDomainLookupStart(Long domainLookupStart) {
+        this.domainLookupStart = domainLookupStart;
+    }
+
+    public void setDomainLookupEnd(Long domainLookupEnd) {
+        this.domainLookupEnd = domainLookupEnd;
+    }
+
+    public void setConnectStart(Long connectStart) {
+        this.connectStart = connectStart;
+    }
+
+    public void setConnectEnd(Long connectEnd) {
+        this.connectEnd = connectEnd;
+    }
+
+    public void setSecureConnectionStart(Long secureConnectionStart) {
+        this.secureConnectionStart = secureConnectionStart;
+    }
+
+    public void setRequestStart(Long requestStart) {
+        this.requestStart = requestStart;
+    }
+
+    public void setResponseStart(Long responseStart) {
+        this.responseStart = responseStart;
+    }
+
+    public void setResponseEnd(Long responseEnd) {
+        this.responseEnd = responseEnd;
+    }
+
+    public void setDomLoading(Long domLoading) {
+        this.domLoading = domLoading;
+    }
+
+    public void setDomInteractive(Long domInteractive) {
+        this.domInteractive = domInteractive;
+    }
+
+    public void setDomContentLoadedEventStart(Long domContentLoadedEventStart) {
+        this.domContentLoadedEventStart = domContentLoadedEventStart;
+    }
+
+    public void setDomContentLoadedEventEnd(Long domContentLoadedEventEnd) {
+        this.domContentLoadedEventEnd = domContentLoadedEventEnd;
+    }
+
+    public void setDomComplete(Long domComplete) {
+        this.domComplete = domComplete;
+    }
+
+    public void setLoadEventStart(Long loadEventStart) {
+        this.loadEventStart = loadEventStart;
+    }
+
+    public void setLoadEventEnd(Long loadEventEnd) {
+        this.loadEventEnd = loadEventEnd;
     }
 
     public String toString() {

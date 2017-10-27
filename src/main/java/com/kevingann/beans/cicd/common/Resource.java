@@ -1,8 +1,13 @@
 package com.kevingann.beans.cicd.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+@JsonDeserialize(builder = Resource.Builder.class)
 public class Resource {
 
     private String name;
@@ -25,6 +30,11 @@ public class Resource {
     private long transferSize;
     private long encodedBodySize;
     private long decodedBodySize;
+    private String nextHopProtocol;
+
+    @JsonIgnore
+    @JsonProperty("toJSON")
+    private ToJSON toJson;
 
     public Resource(Builder builder) {
         this.name = builder.name;
@@ -47,10 +57,11 @@ public class Resource {
         this.transferSize = builder.transferSize;
         this.encodedBodySize = builder.encodedBodySize;
         this.decodedBodySize = builder.decodedBodySize;
+        this.nextHopProtocol = builder.nextHopProtocol;
     }
 
+    @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "")
     public static class Builder {
-
         private String name;
         private String entryType;
         private String initiatorType;
@@ -71,6 +82,18 @@ public class Resource {
         private long transferSize;
         private long encodedBodySize;
         private long decodedBodySize;
+        private ToJSON toJSON;
+        private String nextHopProtocol;
+
+        public Builder nextHopProtocol(String nextHopProtocol) {
+            this.nextHopProtocol = nextHopProtocol;
+            return this;
+        }
+
+        public Builder toJSON(ToJSON toJSON) {
+            this.toJSON = toJSON;
+            return this;
+        }
 
         public Builder decodedBodySize(long decodedBodySize) {
             this.decodedBodySize = decodedBodySize;
@@ -178,6 +201,14 @@ public class Resource {
         }
     }
 
+    public String getNextHopProtocol() {
+        return nextHopProtocol;
+    }
+
+    public void setNextHopProtocol(String nextHopProtocol) {
+        this.nextHopProtocol = nextHopProtocol;
+    }
+
     public String getName() {
         return name;
     }
@@ -256,6 +287,94 @@ public class Resource {
 
     public long getDecodedBodySize() {
         return decodedBodySize;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEntryType(String entryType) {
+        this.entryType = entryType;
+    }
+
+    public void setStartTime(Double startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setDuration(Double duration) {
+        this.duration = duration;
+    }
+
+    public void setInitiatorType(String initiatorType) {
+        this.initiatorType = initiatorType;
+    }
+
+    public void setWorkerStart(Double workerStart) {
+        this.workerStart = workerStart;
+    }
+
+    public void setRedirectStart(Double redirectStart) {
+        this.redirectStart = redirectStart;
+    }
+
+    public void setRedirectEnd(Double redirectEnd) {
+        this.redirectEnd = redirectEnd;
+    }
+
+    public void setFetchStart(Double fetchStart) {
+        this.fetchStart = fetchStart;
+    }
+
+    public void setDomainLookupStart(Double domainLookupStart) {
+        this.domainLookupStart = domainLookupStart;
+    }
+
+    public void setDomainLookupEnd(Double domainLookupEnd) {
+        this.domainLookupEnd = domainLookupEnd;
+    }
+
+    public void setConnectStart(Double connectStart) {
+        this.connectStart = connectStart;
+    }
+
+    public void setConnectEnd(Double connectEnd) {
+        this.connectEnd = connectEnd;
+    }
+
+    public void setSecureConnectionStart(Double secureConnectionStart) {
+        this.secureConnectionStart = secureConnectionStart;
+    }
+
+    public void setRequestStart(Double requestStart) {
+        this.requestStart = requestStart;
+    }
+
+    public void setResponseStart(Double responseStart) {
+        this.responseStart = responseStart;
+    }
+
+    public void setResponseEnd(Double responseEnd) {
+        this.responseEnd = responseEnd;
+    }
+
+    public void setTransferSize(long transferSize) {
+        this.transferSize = transferSize;
+    }
+
+    public void setEncodedBodySize(long encodedBodySize) {
+        this.encodedBodySize = encodedBodySize;
+    }
+
+    public void setDecodedBodySize(long decodedBodySize) {
+        this.decodedBodySize = decodedBodySize;
+    }
+
+    public ToJSON getToJson() {
+        return toJson;
+    }
+
+    public void setToJson(ToJSON toJson) {
+        this.toJson = toJson;
     }
 
     public String toString() {
