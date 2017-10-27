@@ -1,6 +1,11 @@
 package com.kevingann.beans.cicd.navtiming;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.kevingann.beans.cicd.common.Baseline;
+import com.kevingann.beans.cicd.common.Flags;
+import com.kevingann.beans.cicd.common.InjectJS;
+import com.kevingann.beans.cicd.common.Log;
+import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

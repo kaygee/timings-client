@@ -1,8 +1,6 @@
-package com.kevingann.beans.cicd.navtiming;
+package com.kevingann.beans.cicd.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kevingann.beans.cicd.usertiming.Mark;
-import com.kevingann.beans.cicd.usertiming.Measure;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

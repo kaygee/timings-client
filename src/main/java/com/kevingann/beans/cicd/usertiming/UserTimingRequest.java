@@ -1,11 +1,11 @@
 package com.kevingann.beans.cicd.usertiming;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kevingann.beans.cicd.navtiming.Baseline;
-import com.kevingann.beans.cicd.navtiming.Flags;
-import com.kevingann.beans.cicd.navtiming.InjectJS;
-import com.kevingann.beans.cicd.navtiming.Log;
-import com.kevingann.beans.cicd.navtiming.ServiceLevelAgreement;
+import com.kevingann.beans.cicd.common.Baseline;
+import com.kevingann.beans.cicd.common.Flags;
+import com.kevingann.beans.cicd.common.InjectJS;
+import com.kevingann.beans.cicd.common.Log;
+import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
 
 public class UserTimingRequest {
 

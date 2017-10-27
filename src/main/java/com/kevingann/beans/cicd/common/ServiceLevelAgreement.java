@@ -1,4 +1,4 @@
-package com.kevingann.beans.cicd.navtiming;
+package com.kevingann.beans.cicd.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;

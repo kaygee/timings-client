@@ -1,13 +1,13 @@
 package com.kevingann;
 
-import com.kevingann.beans.cicd.navtiming.Baseline;
-import com.kevingann.beans.cicd.navtiming.Flags;
-import com.kevingann.beans.cicd.navtiming.Include;
-import com.kevingann.beans.cicd.navtiming.InjectJS;
-import com.kevingann.beans.cicd.navtiming.Log;
-import com.kevingann.beans.cicd.navtiming.ServiceLevelAgreement;
-import com.kevingann.beans.cicd.usertiming.Mark;
-import com.kevingann.beans.cicd.usertiming.Measure;
+import com.kevingann.beans.cicd.common.Baseline;
+import com.kevingann.beans.cicd.common.Flags;
+import com.kevingann.beans.cicd.common.Include;
+import com.kevingann.beans.cicd.common.InjectJS;
+import com.kevingann.beans.cicd.common.Log;
+import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
+import com.kevingann.beans.cicd.common.Mark;
+import com.kevingann.beans.cicd.common.Measure;
 import com.kevingann.beans.cicd.usertiming.UserTimingRequest;
 import com.kevingann.facade.TimingsFacade;
 import org.junit.Test;

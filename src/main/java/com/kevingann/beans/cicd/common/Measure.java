@@ -1,8 +1,8 @@
-package com.kevingann.beans.cicd.usertiming;
+package com.kevingann.beans.cicd.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Mark {
+public class Measure {
 
     @JsonProperty("name")
     private String name;
@@ -16,7 +16,7 @@ public class Mark {
     @JsonProperty("duration")
     private Double duration;
 
-    public Mark(Builder builder) {
+    public Measure(Builder builder) {
         this.name = builder.name;
         this.entryType = builder.entryType;
         this.startTime = builder.startTime;
@@ -49,8 +49,8 @@ public class Mark {
             return this;
         }
 
-        public Mark build() {
-            return new Mark(this);
+        public Measure build() {
+            return new Measure(this);
         }
     }
 
