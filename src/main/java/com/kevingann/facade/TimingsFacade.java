@@ -1,7 +1,9 @@
 package com.kevingann.facade;
 
 import com.kevingann.beans.cicd.injectjs.InjectJSResponse;
-import com.kevingann.beans.cicd.injectjs.Model;
+import com.kevingann.beans.cicd.injectjs.InjectJSRequest;
+import com.kevingann.beans.cicd.navtiming.NavigationTimingRequest;
+import com.kevingann.beans.cicd.navtiming.NavigationTimingResponse;
 import com.kevingann.beans.home.HealthStatus;
 import com.kevingann.util.ConfigUtil;
 import io.restassured.RestAssured;
@@ -21,6 +23,7 @@ public class TimingsFacade {
 
     private static final String HEALTH_PATH = "/home";
     private static final String INJECTJS_PATH = "/v2/api/cicd/injectjs";
+    private static final String NAVTIMING_PATH = "/v2/api/cicd/navtiming";
 
     public TimingsFacade() {
         RestAssured.defaultParser = Parser.JSON;
@@ -41,11 +44,27 @@ public class TimingsFacade {
         // @formatter:on
     }
 
-    public InjectJSResponse getInjectJs(Model model) {
+    public String getNavigationTiming(NavigationTimingRequest navigationTimingRequest) {
         // @formatter:off
 
         return given().
-                spec(getRequestSpecification(model)).
+                spec(getRequestSpecification(navigationTimingRequest)).
+                expect().
+                response().
+                statusCode(200).
+                when().
+                post(ConfigUtil.getUri(NAVTIMING_PATH)).
+                andReturn().asString();
+//                as(NavigationTimingResponse.class);
+
+        // @formatter:on
+    }
+
+    public InjectJSResponse getInjectJs(InjectJSRequest injectJSRequest) {
+        // @formatter:off
+
+        return given().
+                spec(getRequestSpecification(injectJSRequest)).
                 expect().
                 response().
                 statusCode(200).
@@ -54,13 +73,20 @@ public class TimingsFacade {
                 andReturn().
                 as(InjectJSResponse.class);
 
-
         // @formatter:on
     }
 
-    private RequestSpecification getRequestSpecification(Model model) {
+    private RequestSpecification getRequestSpecification(NavigationTimingRequest navigationTimingRequest) {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
-        requestSpecBuilder.setBody(model);
+        requestSpecBuilder.setBody(navigationTimingRequest);
+        requestSpecBuilder.setContentType(ContentType.JSON);
+        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        return requestSpecBuilder.build();
+    }
+
+    private RequestSpecification getRequestSpecification(InjectJSRequest injectJSRequest) {
+        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setBody(injectJSRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
         requestSpecBuilder.addFilter(new ErrorLoggingFilter());
         return requestSpecBuilder.build();

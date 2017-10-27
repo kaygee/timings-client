@@ -2,7 +2,7 @@ package com.kevingann.beans.cicd.injectjs;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Model {
+public class InjectJSRequest {
 
     @JsonProperty("injectType")
     private String injectType;
