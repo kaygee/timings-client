@@ -17,7 +17,7 @@ public class ConfigUtil {
 
     private static final Logger LOG = LoggerFactory.getLogger(ConfigUtil.class);
 
-    private static final String CONFIG_FILE_NAME = "config.properties";
+    private static final String CONFIG_FILE_NAME = "timings-client.properties";
     private static final Properties CONFIG_PROPERTIES = new Properties();
 
     /**
