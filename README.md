@@ -11,3 +11,7 @@ This is a Java client for the [GoDaddy/timings](https://github.com/godaddy/timin
 
 ## Rest Assured
 - See http://stackoverflow.com/questions/3375307/how-to-disable-code-formatting-for-some-part-of-the-code-using-comments
+
+## Including in a Java Project
+- Build it locally using `mvn package`.
+- Publish it to you Maven repository using [this](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html).
