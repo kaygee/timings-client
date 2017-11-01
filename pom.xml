@@ -6,7 +6,23 @@
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>timings-client</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/kaygee/timings-client</url>
+    <description>Project that provides an API and methods for the https://github.com/godaddy/timings project.
+    </description>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <issueManagement>
+        <url>https://github.com/kaygee/timings-client/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    <scm>
+        <url>https://github.com/kaygee/timings-client</url>
+    </scm>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
