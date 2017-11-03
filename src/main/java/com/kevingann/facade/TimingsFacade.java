@@ -13,7 +13,7 @@ import com.kevingann.beans.cicd.resources.ResourcesResponse;
 import com.kevingann.beans.cicd.usertiming.UserTimingRequest;
 import com.kevingann.beans.cicd.usertiming.UserTimingResponse;
 import com.kevingann.beans.home.HealthStatus;
-import com.kevingann.util.ConfigUtil;
+import com.kevingann.util.TimingsClientConfig;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.RestAssuredConfig;
@@ -60,7 +60,7 @@ public class TimingsFacade {
                 response().
                 statusCode(200).
                 when().
-                get(ConfigUtil.getUri(HEALTH_PATH)).
+                get(TimingsClientConfig.getUri(HEALTH_PATH)).
                 andReturn().
                 as(HealthStatus.class);
 
@@ -76,7 +76,7 @@ public class TimingsFacade {
                 response().
                 statusCode(200).
                 when().
-                post(ConfigUtil.getUri(RESOURCES_PATH)).
+                post(TimingsClientConfig.getUri(RESOURCES_PATH)).
                 andReturn().
                 as(ResourcesResponse.class);
 
@@ -92,7 +92,7 @@ public class TimingsFacade {
                 response().
                 statusCode(200).
                 when().
-                post(ConfigUtil.getUri(APITIMING_PATH)).
+                post(TimingsClientConfig.getUri(APITIMING_PATH)).
                 andReturn().
                 as(APITimingResponse.class);
 
@@ -108,7 +108,7 @@ public class TimingsFacade {
                 response().
                 statusCode(200).
                 when().
-                post(ConfigUtil.getUri(USERTIMING_PATH)).
+                post(TimingsClientConfig.getUri(USERTIMING_PATH)).
                 andReturn().
                 as(UserTimingResponse.class);
 
@@ -124,7 +124,7 @@ public class TimingsFacade {
                 response().
                 statusCode(200).
                 when().
-                post(ConfigUtil.getUri(NAVTIMING_PATH)).
+                post(TimingsClientConfig.getUri(NAVTIMING_PATH)).
                 andReturn().
                 as(NavigationTimingResponse.class);
 
@@ -140,7 +140,7 @@ public class TimingsFacade {
                 response().
                 statusCode(200).
                 when().
-                post(ConfigUtil.getUri(INJECTJS_PATH)).
+                post(TimingsClientConfig.getUri(INJECTJS_PATH)).
                 andReturn().
                 as(InjectJSResponse.class);
 
@@ -156,7 +156,7 @@ public class TimingsFacade {
                 response().
                 statusCode(200).
                 when().
-                post(ConfigUtil.getUri(INJECTJS_PATH)).
+                post(TimingsClientConfig.getUri(INJECTJS_PATH)).
                 andReturn().
                 as(InjectJSResponse.class).getInjectCode(), "UTF-8");
 

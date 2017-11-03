@@ -13,9 +13,9 @@ import java.util.Properties;
 
 import static org.apache.commons.validator.routines.UrlValidator.ALLOW_LOCAL_URLS;
 
-public class ConfigUtil {
+public class TimingsClientConfig {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ConfigUtil.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TimingsClientConfig.class);
 
     private static final String CONFIG_FILE_NAME = "timings-client.properties";
     private static final Properties CONFIG_PROPERTIES = new Properties();
@@ -46,8 +46,8 @@ public class ConfigUtil {
             value = System.getenv(key);
         } else if (System.getProperties().containsKey(key)) {
             value = System.getProperty(key);
-        } else if (ConfigUtil.getProperties().containsKey(key)) {
-            value = ConfigUtil.getProperties().getProperty(key);
+        } else if (TimingsClientConfig.getProperties().containsKey(key)) {
+            value = TimingsClientConfig.getProperties().getProperty(key);
         } else {
             LOG.error("Environment variable or property file entry not found for '" + key + "'.");
             System.exit(1);
@@ -66,8 +66,12 @@ public class ConfigUtil {
     }
 
     public static String provideEndpointUrl() {
-        String url = ConfigUtil.getEnvVarOrProperty("PERF_API_URL");
+        String url = TimingsClientConfig.getEnvVarOrProperty("PERF_API_URL");
         return getUrl(url);
+    }
+
+    public static String provideTeam() {
+        return TimingsClientConfig.getEnvVarOrProperty("TEAM");
     }
 
     public static URI getUri(String path) {
@@ -82,7 +86,7 @@ public class ConfigUtil {
     }
 
     public static String getFullPath(String path) {
-        String endpointUrl = ConfigUtil.provideEndpointUrl();
+        String endpointUrl = TimingsClientConfig.provideEndpointUrl();
         if (endpointUrl.endsWith("/")) {
             String substring = endpointUrl.substring(0, endpointUrl.length() - 1);
             return substring + path;
