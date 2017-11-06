@@ -78,8 +78,8 @@ public class InjectJS {
         /**
          * TODO: This must be a valid URL.
          *
-         * @param url
-         * @return
+         * @param url must be a valid URL
+         * @return This is a builder instance
          */
         public Builder url(String url) {
             this.url = url;

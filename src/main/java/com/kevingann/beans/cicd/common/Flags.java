@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
- * Collection of flags for actions & return output.
+ * Collection of flags for actions and returns output.
  */
 public class Flags {
 
@@ -42,8 +42,8 @@ public class Flags {
         /**
          * Assert against RUM baseline (true) or against flat sla (false).
          *
-         * @param assertBaseline
-         * @return
+         * @param assertBaseline whether to assert against the baseline
+         * @return builder instance
          */
         public Builder assertBaseline(Boolean assertBaseline) {
             this.assertBaseline = assertBaseline;
@@ -53,8 +53,8 @@ public class Flags {
         /**
          * Return debug output.
          *
-         * @param debug
-         * @return
+         * @param debug return debug output
+         * @return builder instance
          */
         public Builder debug(Boolean debug) {
             this.debug = debug;
@@ -64,8 +64,8 @@ public class Flags {
         /**
          * Return ElasticSearch trace output.
          *
-         * @param esTrace
-         * @return
+         * @param esTrace Return ElasticSearch trace output
+         * @return builder instance
          */
         public Builder esTrace(Boolean esTrace) {
             this.esTrace = esTrace;
@@ -75,8 +75,8 @@ public class Flags {
         /**
          * Write results to ElasticSearch.
          *
-         * @param esCreate
-         * @return
+         * @param esCreate Write results to ElasticSearch
+         * @return builder instance
          */
         public Builder esCreate(Boolean esCreate) {
             this.esCreate = esCreate;
@@ -86,8 +86,8 @@ public class Flags {
         /**
          * Will determine whether a failed assertion will still return true in the assert field.
          *
-         * @param passOnFailedAssert
-         * @return
+         * @param passOnFailedAssert determine whether a failed assertion will still return true in the assert field
+         * @return builder instance
          */
         public Builder passOnFailedAssert(Boolean passOnFailedAssert) {
             this.passOnFailedAssert = passOnFailedAssert;

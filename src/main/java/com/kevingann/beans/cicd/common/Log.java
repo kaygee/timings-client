@@ -43,8 +43,8 @@ public class Log {
         /**
          * Environment of the test target. Examples: "test", "prod".
          *
-         * @param environmentTarget
-         * @return
+         * @param environmentTarget Environment of the test target
+         * @return builder instance
          */
         public Builder environmentTarget(String environmentTarget) {
             this.environmentTarget = environmentTarget;
@@ -54,8 +54,8 @@ public class Log {
         /**
          * The browser used to run the test. Examples: "chrome", "firefox".
          *
-         * @param browser
-         * @return
+         * @param browser The browser used to run the test
+         * @return builder instance
          */
         public Builder browser(String browser) {
             this.browser = browser;
@@ -65,8 +65,8 @@ public class Log {
         /**
          * The platform of the test source. Examples: "local", "saucelabs-windows-firefox47".
          *
-         * @param environmentTester
-         * @return
+         * @param environmentTester The platform of the test source
+         * @return builder instance
          */
         public Builder environmentTester(String environmentTester) {
             this.environmentTester = environmentTester;
@@ -76,8 +76,8 @@ public class Log {
         /**
          * String describing the page/transaction being tested. Example: "Login to home page".
          *
-         * @param testInfo
-         * @return
+         * @param testInfo String describing the page/transaction being tested
+         * @return builder instance
          */
         public Builder testInfo(String testInfo) {
             this.testInfo = testInfo;
@@ -87,8 +87,8 @@ public class Log {
         /**
          * Short string describing the product or test team.
          *
-         * @param team
-         * @return
+         * @param team Short string describing the product or test team
+         * @return builder instance
          */
         public Builder team(String team) {
             this.team = team;

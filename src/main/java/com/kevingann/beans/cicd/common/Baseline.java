@@ -44,8 +44,8 @@ public class Baseline {
          * This can be used to fine-tune the baseline query. The key-value pair will be used as an "include-filter"
          * for the ElasticSearch query. Example: {"browser": "chrome"}.
          *
-         * @param include
-         * @return
+         * @param include used to fine-tune the baseline query.
+         * @return builder instance
          */
         public Builder incl(Include include) {
             this.include = include;
@@ -56,8 +56,8 @@ public class Baseline {
          * A custom search string/wildcard for the baseline. This will be applied to the 'dl' field query. Has to be
          * a full, valid Kibana search string and can not be empty!
          *
-         * @param searchUrl
-         * @return
+         * @param searchUrl custom search string/wildcard for the baseline
+         * @return builder instance
          */
         public Builder searchUrl(String searchUrl) {
             this.searchUrl = searchUrl;
@@ -65,10 +65,10 @@ public class Baseline {
         }
 
         /**
-         * Baseline multiplyer that enabled you to "pad" the baseline. Value has to be > 1.
+         * Baseline multiplier that enabled you to "pad" the baseline. Value has to be greater than 1.
          *
-         * @param padding
-         * @return
+         * @param padding amount fo pad.
+         * @return builder instance
          */
         public Builder padding(double padding) {
             this.padding = padding;
@@ -78,8 +78,8 @@ public class Baseline {
         /**
          * The percentile for the baseline.
          *
-         * @param percent
-         * @return
+         * @param percent percentile for the baseline
+         * @return builder instance
          */
         public Builder percent(int percent) {
             this.percent = percent;
@@ -89,8 +89,8 @@ public class Baseline {
         /**
          * Number of days for the baseline.
          *
-         * @param days
-         * @return
+         * @param days days for the baseline
+         * @return builder instance
          */
         public Builder days(int days) {
             this.days = days;
