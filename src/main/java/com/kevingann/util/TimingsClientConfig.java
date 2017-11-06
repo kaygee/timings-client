@@ -74,6 +74,10 @@ public class TimingsClientConfig {
         return TimingsClientConfig.getEnvVarOrProperty("TEAM");
     }
 
+    public static Long providePageLoadTime() {
+        return Long.valueOf(TimingsClientConfig.getEnvVarOrProperty("PAGE_LOAD_TIME_MS"));
+    }
+
     public static URI getUri(String path) {
         String fullPath = getFullPath(path);
         URI uri = null;

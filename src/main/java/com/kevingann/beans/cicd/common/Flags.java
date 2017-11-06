@@ -6,8 +6,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Flags {
 
-    @JsonProperty("assertRum")
-    private Boolean assertRum;
+    @JsonProperty("assertBaseline")
+    private Boolean assertBaseline;
 
     @JsonProperty("debug")
     private Boolean debug;
@@ -22,7 +22,7 @@ public class Flags {
     private Boolean passOnFailedAssert;
 
     public Flags(Builder builder) {
-        this.assertRum = builder.assertRum;
+        this.assertBaseline = builder.assertBaseline;
         this.debug = builder.debug;
         this.esTrace = builder.esTrace;
         this.esCreate = builder.esCreate;
@@ -30,14 +30,14 @@ public class Flags {
     }
 
     public static class Builder {
-        private Boolean assertRum;
+        private Boolean assertBaseline;
         private Boolean debug;
         private Boolean esTrace;
         private Boolean esCreate;
         private Boolean passOnFailedAssert;
 
-        public Builder assertRum(Boolean assertRum) {
-            this.assertRum = assertRum;
+        public Builder assertBaseline(Boolean assertBaseline) {
+            this.assertBaseline = assertBaseline;
             return this;
         }
 
@@ -67,8 +67,8 @@ public class Flags {
 
     }
 
-    public Boolean isAssertRum() {
-        return assertRum;
+    public Boolean isAssertBsaeline() {
+        return assertBaseline;
     }
 
     public Boolean isDebug() {

@@ -129,8 +129,11 @@ public class NavigationTimingAssertion {
 
         // @formatter:on
 
+        LOG.info("SENDING");
+        LOG.info(navigationTimingRequest.toString());
         TimingsFacade timingsFacade = new TimingsFacade();
         NavigationTimingResponse navigationTimingResponse = timingsFacade.getNavigationTiming(navigationTimingRequest);
+        LOG.info("RESPONSE");
         LOG.info(navigationTimingResponse.toString());
     }
 }
