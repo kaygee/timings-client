@@ -5,9 +5,9 @@ import com.kevingann.beans.cicd.common.Flags;
 import com.kevingann.beans.cicd.common.Include;
 import com.kevingann.beans.cicd.common.InjectJS;
 import com.kevingann.beans.cicd.common.Log;
-import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
 import com.kevingann.beans.cicd.common.Mark;
 import com.kevingann.beans.cicd.common.Measure;
+import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
 import com.kevingann.beans.cicd.usertiming.UserTimingRequest;
 import com.kevingann.beans.cicd.usertiming.UserTimingResponse;
 import com.kevingann.facade.TimingsFacade;
@@ -63,8 +63,6 @@ public class UserTimingAssertion {
                 .percent(75)
                 .padding(1.2)
                 .searchUrl("http://www.google.com")
-                .src("cicd")
-                .aggField("act_pageLoadTime")
                 .incl(include)
                 .build();
 

@@ -47,8 +47,6 @@ public class APITimingAssertion {
                 .percent(75)
                 .padding(1.2)
                 .searchUrl("http://www.google.com")
-                .src("cicd")
-                .aggField("act_pageLoadTime")
                 .incl(include)
                 .build();
 

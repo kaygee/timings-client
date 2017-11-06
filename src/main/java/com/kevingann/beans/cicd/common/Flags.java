@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+/**
+ * Collection of flags for actions & return output.
+ */
 public class Flags {
 
     @JsonProperty("assertBaseline")
@@ -36,26 +39,56 @@ public class Flags {
         private Boolean esCreate;
         private Boolean passOnFailedAssert;
 
+        /**
+         * Assert against RUM baseline (true) or against flat sla (false).
+         *
+         * @param assertBaseline
+         * @return
+         */
         public Builder assertBaseline(Boolean assertBaseline) {
             this.assertBaseline = assertBaseline;
             return this;
         }
 
+        /**
+         * Return debug output.
+         *
+         * @param debug
+         * @return
+         */
         public Builder debug(Boolean debug) {
             this.debug = debug;
             return this;
         }
 
+        /**
+         * Return ElasticSearch trace output.
+         *
+         * @param esTrace
+         * @return
+         */
         public Builder esTrace(Boolean esTrace) {
             this.esTrace = esTrace;
             return this;
         }
 
+        /**
+         * Write results to ElasticSearch.
+         *
+         * @param esCreate
+         * @return
+         */
         public Builder esCreate(Boolean esCreate) {
             this.esCreate = esCreate;
             return this;
         }
 
+        /**
+         * Will determine whether a failed assertion will still return true in the assert field.
+         *
+         * @param passOnFailedAssert
+         * @return
+         */
         public Builder passOnFailedAssert(Boolean passOnFailedAssert) {
             this.passOnFailedAssert = passOnFailedAssert;
             return this;

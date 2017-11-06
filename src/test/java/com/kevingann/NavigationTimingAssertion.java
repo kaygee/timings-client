@@ -5,11 +5,11 @@ import com.kevingann.beans.cicd.common.Flags;
 import com.kevingann.beans.cicd.common.Include;
 import com.kevingann.beans.cicd.common.InjectJS;
 import com.kevingann.beans.cicd.common.Log;
-import com.kevingann.beans.cicd.navtiming.NavigationTimingRequest;
-import com.kevingann.beans.cicd.navtiming.NavigationTimingResponse;
 import com.kevingann.beans.cicd.common.Resource;
 import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
 import com.kevingann.beans.cicd.common.Timing;
+import com.kevingann.beans.cicd.navtiming.NavigationTimingRequest;
+import com.kevingann.beans.cicd.navtiming.NavigationTimingResponse;
 import com.kevingann.facade.TimingsFacade;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -104,8 +104,6 @@ public class NavigationTimingAssertion {
                 .percent(75)
                 .padding(1.2)
                 .searchUrl("http://www.google.com")
-                .src("cicd")
-                .aggField("act_pageLoadTime")
                 .incl(include)
                 .build();
 

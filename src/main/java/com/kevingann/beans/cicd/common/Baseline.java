@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+/**
+ * Set of parameters that determine how the baseline is determined.
+ */
 public class Baseline {
 
     @JsonProperty("days")
@@ -18,12 +21,6 @@ public class Baseline {
     @JsonProperty("searchUrl")
     private String searchUrl;
 
-    @JsonProperty("src")
-    private String src;
-
-    @JsonProperty("aggField")
-    private String aggField;
-
     @JsonProperty("incl")
     private Include include;
 
@@ -32,8 +29,6 @@ public class Baseline {
         this.percent = builder.percent;
         this.padding = builder.padding;
         this.searchUrl = builder.searchUrl;
-        this.src = builder.src;
-        this.aggField = builder.aggField;
         this.include = builder.include;
     }
 
@@ -43,27 +38,23 @@ public class Baseline {
         private int percent;
         private double padding;
         private String searchUrl;
-        private String src;
-        private String aggField;
         private Include include;
 
+        /**
+         * This can be used to fine-tune the baseline query. The key-value pair will be used as an "include-filter"
+         * for the ElasticSearch query. Example: {"browser": "chrome"}.
+         *
+         * @param include
+         * @return
+         */
         public Builder incl(Include include) {
             this.include = include;
             return this;
         }
 
-        public Builder aggField(String aggField) {
-            this.aggField = aggField;
-            return this;
-        }
-
-        public Builder src(String src) {
-            this.src = src;
-            return this;
-        }
-
         /**
-         * TODO: Not allowed to be empty.
+         * A custom search string/wildcard for the baseline. This will be applied to the 'dl' field query. Has to be
+         * a full, valid Kibana search string and can not be empty!
          *
          * @param searchUrl
          * @return
@@ -73,16 +64,34 @@ public class Baseline {
             return this;
         }
 
+        /**
+         * Baseline multiplyer that enabled you to "pad" the baseline. Value has to be > 1.
+         *
+         * @param padding
+         * @return
+         */
         public Builder padding(double padding) {
             this.padding = padding;
             return this;
         }
 
+        /**
+         * The percentile for the baseline.
+         *
+         * @param percent
+         * @return
+         */
         public Builder percent(int percent) {
             this.percent = percent;
             return this;
         }
 
+        /**
+         * Number of days for the baseline.
+         *
+         * @param days
+         * @return
+         */
         public Builder days(int days) {
             this.days = days;
             return this;

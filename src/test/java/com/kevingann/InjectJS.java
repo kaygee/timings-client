@@ -1,7 +1,7 @@
 package com.kevingann;
 
-import com.kevingann.beans.cicd.injectjs.InjectJSResponse;
 import com.kevingann.beans.cicd.injectjs.InjectJSRequest;
+import com.kevingann.beans.cicd.injectjs.InjectJSResponse;
 import com.kevingann.constants.InjectType;
 import com.kevingann.facade.TimingsFacade;
 import org.junit.Test;

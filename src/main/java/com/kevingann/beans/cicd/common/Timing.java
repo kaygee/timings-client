@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+/**
+ * https://www.w3.org/TR/navigation-timing/#performancetiming
+ */
 @JsonDeserialize(builder = Timing.Builder.class)
 public class Timing {
 
