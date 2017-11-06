@@ -100,7 +100,7 @@ public class Flags {
 
     }
 
-    public Boolean isAssertBsaeline() {
+    public Boolean isAssertBaseline() {
         return assertBaseline;
     }
 
