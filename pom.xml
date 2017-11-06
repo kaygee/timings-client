@@ -4,7 +4,7 @@
     <groupId>com.kevingann</groupId>
     <artifactId>timings-client</artifactId>
     <packaging>jar</packaging>
-    <version>1.1-SNAPSHOT</version>
+    <version>0.1</version>
     <name>timings-client</name>
     <url>https://github.com/kaygee/timings-client</url>
     <description>Project that provides an API and methods for the https://github.com/godaddy/timings project.
@@ -16,12 +16,19 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+    <developers>
+        <developer>
+            <name>Kevin Gann</name>
+            <email>kaygee@gmail.com</email>
+            <organizationUrl>https://github.com/kaygee</organizationUrl>
+        </developer>
+    </developers>
     <issueManagement>
         <url>https://github.com/kaygee/timings-client/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
     <scm>
-        <url>https://github.com/kaygee/timings-client</url>
+        <url>https://github.com/kaygee/timings-client.git</url>
     </scm>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -35,8 +42,20 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -49,11 +68,26 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0-M1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
