@@ -6,6 +6,7 @@ import com.kevingann.beans.cicd.common.Flags;
 import com.kevingann.beans.cicd.common.InjectJS;
 import com.kevingann.beans.cicd.common.Log;
 import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -68,6 +69,9 @@ public class NavigationTimingRequest {
         }
 
         public NavigationTimingRequest build() {
+            if (!ObjectUtils.allNotNull(serviceLevelAgreement, log)) {
+                throw new IllegalStateException("Missing required field.");
+            }
             return new NavigationTimingRequest(this);
         }
 

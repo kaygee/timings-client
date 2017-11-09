@@ -74,6 +74,10 @@ public class TimingsClientConfig {
         return TimingsClientConfig.getEnvVarOrProperty("TEAM");
     }
 
+    public static Long provideTestInfo() {
+        return Long.valueOf(TimingsClientConfig.getEnvVarOrProperty("TEST_INFO"));
+    }
+
     public static Long providePageLoadTime() {
         return Long.valueOf(TimingsClientConfig.getEnvVarOrProperty("PAGE_LOAD_TIME_MS"));
     }

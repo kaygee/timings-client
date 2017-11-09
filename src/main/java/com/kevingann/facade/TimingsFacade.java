@@ -2,6 +2,8 @@ package com.kevingann.facade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.kevingann.beans.cicd.apitiming.APITimingRequest;
 import com.kevingann.beans.cicd.apitiming.APITimingResponse;
 import com.kevingann.beans.cicd.injectjs.InjectJSRequest;
@@ -16,9 +18,14 @@ import com.kevingann.beans.home.HealthStatus;
 import com.kevingann.util.TimingsClientConfig;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.config.ObjectMapperConfig;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.filter.log.ErrorLoggingFilter;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.mapper.factory.Jackson2ObjectMapperFactory;
 import io.restassured.parsing.Parser;
 import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
@@ -43,13 +50,6 @@ public class TimingsFacade {
 
     public TimingsFacade() {
         RestAssured.defaultParser = Parser.JSON;
-
-        RestAssured.config = RestAssuredConfig.config().objectMapperConfig(objectMapperConfig()
-                .jackson2ObjectMapperFactory((aClass, s) -> {
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-            return objectMapper;
-        }));
     }
 
     public HealthStatus getHealth() {
@@ -165,48 +165,75 @@ public class TimingsFacade {
 
     private RequestSpecification getRequestSpecification(ResourcesRequest resourcesRequest) {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(resourcesRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
         requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        requestSpecBuilder.addFilter(new RequestLoggingFilter());
+        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
         return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification(APITimingRequest apiTimingRequest) {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(apiTimingRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
         requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        requestSpecBuilder.addFilter(new RequestLoggingFilter());
+        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
         return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification(UserTimingRequest userTimingRequest) {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(userTimingRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
         requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        requestSpecBuilder.addFilter(new RequestLoggingFilter());
+        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
         return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification(NavigationTimingRequest navigationTimingRequest) {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(navigationTimingRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
         requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        requestSpecBuilder.addFilter(new RequestLoggingFilter());
+        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
         return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification(InjectJSRequest injectJSRequest) {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(injectJSRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
         requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        requestSpecBuilder.addFilter(new RequestLoggingFilter());
+        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
         return requestSpecBuilder.build();
     }
 
     private RequestSpecification getRequestSpecification() {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setContentType(ContentType.JSON);
         requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        requestSpecBuilder.addFilter(new RequestLoggingFilter());
+        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
         return requestSpecBuilder.build();
+    }
+
+    private RestAssuredConfig getConfiguration() {
+        return RestAssuredConfig.config().objectMapperConfig(objectMapperConfig().jackson2ObjectMapperFactory(
+                (aClass, s) -> {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+            return objectMapper;
+        }));
     }
 }

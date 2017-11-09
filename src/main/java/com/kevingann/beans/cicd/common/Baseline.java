@@ -1,6 +1,7 @@
 package com.kevingann.beans.cicd.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -98,6 +99,9 @@ public class Baseline {
         }
 
         public Baseline build() {
+            if (!ObjectUtils.allNotNull(padding)) {
+                throw new IllegalStateException("Missing required field.");
+            }
             return new Baseline(this);
         }
     }

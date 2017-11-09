@@ -127,11 +127,105 @@ public class NavigationTimingAssertion {
 
         // @formatter:on
 
-        LOG.info("SENDING");
-        LOG.info(navigationTimingRequest.toString());
         TimingsFacade timingsFacade = new TimingsFacade();
         NavigationTimingResponse navigationTimingResponse = timingsFacade.getNavigationTiming(navigationTimingRequest);
-        LOG.info("RESPONSE");
-        LOG.info(navigationTimingResponse.toString());
     }
+
+    /**
+     * Attempt to send the request with the minimum set of attributes. These were obtained from the documentation at
+     * https://github.com/godaddy/timings#common-parameters-navtiming-usertiming-and-apitiming
+     */
+    @Test
+    public void canUseMinimumRequiredFields() {
+        // @formatter:off
+
+        Timing timing = new Timing
+                .Builder()
+                .navigationStart(1496339132056L)
+                .unloadEventStart(0L)
+                .unloadEventEnd(0L)
+                .redirectStart(0L)
+                .redirectEnd(0L)
+                .fetchStart(1496339132120L)
+                .domainLookupStart(1496339132123L)
+                .domainLookupEnd(1496339132123L)
+                .connectStart(1496339132123L)
+                .connectEnd(1496339132170L)
+                .secureConnectionStart(1496339132137L)
+                .requestStart(1496339132170L)
+                .responseStart(1496339132300L)
+                .responseEnd(1496339132829L)
+                .domLoading(1496339132309L)
+                .domInteractive(1496339132833L)
+                .domContentLoadedEventStart(1496339132833L)
+                .domContentLoadedEventEnd(1496339132848L)
+                .domComplete(1496339132885L)
+                .loadEventStart(1496339132886L)
+                .loadEventEnd(1496339132889L)
+                .build();
+
+        Resource resource = new Resource
+                .Builder()
+                .name("https://img1.wsimg.com/ux/1.3.46-brand/css/uxcore-sales.min.css")
+                .entryType("resource")
+                .startTime(254.55)
+                .duration(28.064999999999998)
+                .initiatorType("link")
+                .workerStart(0.0)
+                .redirectStart(0.0)
+                .redirectEnd(0.0)
+                .fetchStart(254.55)
+                .domainLookupStart(254.55)
+                .domainLookupEnd(254.55)
+                .connectStart(254.55)
+                .connectEnd(254.55)
+                .secureConnectionStart(0.0)
+                .requestStart(256.665)
+                .responseStart(279.37)
+                .responseEnd(282.615)
+                .transferSize(17008)
+                .encodedBodySize(16731)
+                .decodedBodySize(93840)
+                .build();
+
+        Resource[] resources = {resource};
+
+        InjectJS injectJS = new InjectJS
+                .Builder()
+                .time(1496339132056L)
+                .timing(timing)
+                .visualCompleteTime(1734L)
+                .url("http://www.example.com/")
+                .resources(resources)
+                .build();
+
+        ServiceLevelAgreement sla = new ServiceLevelAgreement();
+        sla.setPageLoadTime(4000L);
+
+        Include include = new Include();
+        include.setUserAgentFamily("*hrome*");
+        include.setOsFamily("_agg_");
+
+        Log log = new Log.
+                Builder()
+                .team("My team")
+                .browser("Chrome")
+                .environmentTester("Kevin Gann")
+                .environmentTarget("The Moon")
+                .testInfo("Test Information")
+                .build();
+
+        NavigationTimingRequest navigationTimingRequest = new NavigationTimingRequest
+                .Builder()
+                .injectJS(injectJS)
+                .serviceLevelAgreement(sla)
+                .log(log)
+                .build();
+
+        // @formatter:on
+
+        TimingsFacade timingsFacade = new TimingsFacade();
+        NavigationTimingResponse navigationTimingResponse = timingsFacade.getNavigationTiming(navigationTimingRequest);
+    }
+
 }
