@@ -82,6 +82,18 @@ public class TimingsClientConfig {
         return Long.valueOf(TimingsClientConfig.getEnvVarOrProperty("PAGE_LOAD_TIME_MS"));
     }
 
+    public static Boolean logRequests() {
+        return Boolean.valueOf(TimingsClientConfig.getEnvVarOrProperty("LOG_REQUESTS"));
+    }
+
+    public static Boolean logResponses() {
+        return Boolean.valueOf(TimingsClientConfig.getEnvVarOrProperty("LOG_RESPONSES"));
+    }
+
+    public static Boolean logErrors() {
+        return Boolean.valueOf(TimingsClientConfig.getEnvVarOrProperty("LOG_ERRORS"));
+    }
+
     public static URI getUri(String path) {
         String fullPath = getFullPath(path);
         URI uri = null;

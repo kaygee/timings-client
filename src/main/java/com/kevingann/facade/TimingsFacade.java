@@ -47,6 +47,10 @@ public class TimingsFacade {
     private static final String USERTIMING_PATH = "/v2/api/cicd/usertiming";
     private static final String APITIMING_PATH = "/v2/api/cicd/apitiming";
     private static final String RESOURCES_PATH = "/v2/api/cicd/resources";
+    
+    private static final Boolean logRequests = TimingsClientConfig.logRequests();
+    private static final Boolean logResponses = TimingsClientConfig.logResponses();
+    private static final Boolean logErrors = TimingsClientConfig.logErrors();
 
     public TimingsFacade() {
         RestAssured.defaultParser = Parser.JSON;
@@ -168,9 +172,7 @@ public class TimingsFacade {
         requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(resourcesRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
-        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
-        requestSpecBuilder.addFilter(new RequestLoggingFilter());
-        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
+        getFilters(requestSpecBuilder);
         return requestSpecBuilder.build();
     }
 
@@ -179,9 +181,7 @@ public class TimingsFacade {
         requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(apiTimingRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
-        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
-        requestSpecBuilder.addFilter(new RequestLoggingFilter());
-        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
+        getFilters(requestSpecBuilder);
         return requestSpecBuilder.build();
     }
 
@@ -190,9 +190,7 @@ public class TimingsFacade {
         requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(userTimingRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
-        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
-        requestSpecBuilder.addFilter(new RequestLoggingFilter());
-        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
+        getFilters(requestSpecBuilder);
         return requestSpecBuilder.build();
     }
 
@@ -201,9 +199,7 @@ public class TimingsFacade {
         requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(navigationTimingRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
-        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
-        requestSpecBuilder.addFilter(new RequestLoggingFilter());
-        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
+        getFilters(requestSpecBuilder);
         return requestSpecBuilder.build();
     }
 
@@ -212,9 +208,7 @@ public class TimingsFacade {
         requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setBody(injectJSRequest);
         requestSpecBuilder.setContentType(ContentType.JSON);
-        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
-        requestSpecBuilder.addFilter(new RequestLoggingFilter());
-        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
+        getFilters(requestSpecBuilder);
         return requestSpecBuilder.build();
     }
 
@@ -222,10 +216,20 @@ public class TimingsFacade {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
         requestSpecBuilder.setConfig(getConfiguration());
         requestSpecBuilder.setContentType(ContentType.JSON);
-        requestSpecBuilder.addFilter(new ErrorLoggingFilter());
-        requestSpecBuilder.addFilter(new RequestLoggingFilter());
-        requestSpecBuilder.addFilter(new ResponseLoggingFilter());
+        getFilters(requestSpecBuilder);
         return requestSpecBuilder.build();
+    }
+
+    private void getFilters(RequestSpecBuilder requestSpecBuilder) {
+        if (logErrors) {
+            requestSpecBuilder.addFilter(new ErrorLoggingFilter());
+        }
+        if (logRequests) {
+            requestSpecBuilder.addFilter(new RequestLoggingFilter());
+        }
+        if (logResponses) {
+            requestSpecBuilder.addFilter(new ResponseLoggingFilter());
+        }
     }
 
     private RestAssuredConfig getConfiguration() {
