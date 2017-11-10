@@ -16,6 +16,14 @@ This is a Java client for the [GoDaddy/timings](https://github.com/godaddy/timin
 - Build it locally using `mvn package`.
 - Publish it to you Maven repository using [this](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html).
 -- Example: `mvn install:install-file -Dfile=./target/timings-client-1.0-SNAPSHOT.jar -DpomFile=pom.xml`
+- Or you can add the dependency to your Maven POM.
+```xml
+<dependency>
+    <groupId>com.kevingann</groupId>
+    <artifactId>timings-client</artifactId>
+    <version>0.3-SNAPSHOT</version>
+</dependency>
+```
 
 ## InjectJS Object
 
