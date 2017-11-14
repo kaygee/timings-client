@@ -102,6 +102,12 @@ public class Baseline {
             if (!ObjectUtils.allNotNull(padding)) {
                 throw new IllegalStateException("Missing required field.");
             }
+            if (percent > 100) {
+                throw new IllegalStateException("percent cannot be greater than 100.");
+            }
+            if (padding < 1) {
+                throw new IllegalStateException("padding cannot be less than 1.");
+            }
             return new Baseline(this);
         }
     }
