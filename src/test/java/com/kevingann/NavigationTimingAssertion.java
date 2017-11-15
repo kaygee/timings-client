@@ -2,7 +2,6 @@ package com.kevingann;
 
 import com.kevingann.beans.cicd.common.Baseline;
 import com.kevingann.beans.cicd.common.Flags;
-import com.kevingann.beans.cicd.common.Include;
 import com.kevingann.beans.cicd.common.InjectJS;
 import com.kevingann.beans.cicd.common.Log;
 import com.kevingann.beans.cicd.common.Resource;
@@ -14,6 +13,9 @@ import com.kevingann.facade.TimingsFacade;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class NavigationTimingAssertion {
 
@@ -94,9 +96,9 @@ public class NavigationTimingAssertion {
         ServiceLevelAgreement sla = new ServiceLevelAgreement();
         sla.setPageLoadTime(4000L);
 
-        Include include = new Include();
-        include.setUserAgentFamily("*hrome*");
-        include.setOsFamily("_agg_");
+        Map<String, String> include = new HashMap<>();
+        include.put("useragent_family", "*hrome*");
+        include.put("os_family", "_agg_");
 
         Baseline baseline = new Baseline.
                 Builder()
@@ -202,9 +204,9 @@ public class NavigationTimingAssertion {
         ServiceLevelAgreement sla = new ServiceLevelAgreement();
         sla.setPageLoadTime(4000L);
 
-        Include include = new Include();
-        include.setUserAgentFamily("*hrome*");
-        include.setOsFamily("_agg_");
+        Map<String, String> include = new HashMap<>();
+        include.put("useragent_family", "*hrome*");
+        include.put("os_family", "_agg_");
 
         Log log = new Log.
                 Builder()

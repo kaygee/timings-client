@@ -4,7 +4,6 @@ import com.kevingann.beans.cicd.apitiming.APITimingRequest;
 import com.kevingann.beans.cicd.apitiming.APITimingResponse;
 import com.kevingann.beans.cicd.common.Baseline;
 import com.kevingann.beans.cicd.common.Flags;
-import com.kevingann.beans.cicd.common.Include;
 import com.kevingann.beans.cicd.common.Log;
 import com.kevingann.beans.cicd.common.ServiceLevelAgreement;
 import com.kevingann.beans.cicd.common.Timing;
@@ -12,6 +11,9 @@ import com.kevingann.facade.TimingsFacade;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class APITimingAssertion {
 
@@ -38,8 +40,8 @@ public class APITimingAssertion {
         ServiceLevelAgreement sla = new ServiceLevelAgreement();
         sla.setPageLoadTime(4000L);
 
-        Include include = new Include();
-        include.setEnvironmentTester("_log_");
+        Map<String, String> include = new HashMap<>();
+        include.put("env_tester", "_log_");
 
         Baseline baseline = new Baseline.
                 Builder()

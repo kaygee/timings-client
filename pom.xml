@@ -4,7 +4,7 @@
     <groupId>com.kevingann</groupId>
     <artifactId>timings-client</artifactId>
     <packaging>jar</packaging>
-    <version>0.6-SNAPSHOT</version>
+    <version>0.7-SNAPSHOT</version>
     <name>timings-client</name>
     <url>https://github.com/kaygee/timings-client</url>
     <description>Project that provides an API and methods for the https://github.com/godaddy/timings project.

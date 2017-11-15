@@ -5,6 +5,8 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import java.util.Map;
+
 /**
  * Set of parameters that determine how the baseline is determined.
  */
@@ -23,7 +25,10 @@ public class Baseline {
     private String searchUrl;
 
     @JsonProperty("incl")
-    private Include include;
+    private Map<String, String> include;
+
+    @JsonProperty("excl")
+    private Map<String, String> exclude;
 
     public Baseline(Builder builder) {
         this.days = builder.days;
@@ -31,6 +36,7 @@ public class Baseline {
         this.padding = builder.padding;
         this.searchUrl = builder.searchUrl;
         this.include = builder.include;
+        this.exclude = builder.exclude;
     }
 
     public static class Builder {
@@ -39,7 +45,8 @@ public class Baseline {
         private int percent;
         private double padding;
         private String searchUrl;
-        private Include include;
+        private Map<String, String> include;
+        private Map<String, String> exclude;
 
         /**
          * This can be used to fine-tune the baseline query. The key-value pair will be used as an "include-filter"
@@ -48,8 +55,20 @@ public class Baseline {
          * @param include used to fine-tune the baseline query.
          * @return builder instance
          */
-        public Builder incl(Include include) {
+        public Builder incl(Map<String, String> include) {
             this.include = include;
+            return this;
+        }
+
+        /**
+         * This can be used to fine-tune the baseline query. The key-value pair will be used as an "exclude-filter"
+         * for the ElasticSearch query. Example: {"status": "fail"} to exclude all the failed tests
+         *
+         * @param exclude used to fine-tune the baseline query.
+         * @return builder instance
+         */
+        public Builder excl(Map<String, String> exclude) {
+            this.exclude = exclude;
             return this;
         }
 
