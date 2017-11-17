@@ -2,8 +2,6 @@ package com.kevingann.facade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.kevingann.beans.cicd.apitiming.APITimingRequest;
 import com.kevingann.beans.cicd.apitiming.APITimingResponse;
 import com.kevingann.beans.cicd.injectjs.InjectJSRequest;
@@ -18,14 +16,11 @@ import com.kevingann.beans.home.HealthStatus;
 import com.kevingann.util.TimingsClientConfig;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.config.ObjectMapperConfig;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.filter.log.ErrorLoggingFilter;
-import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
-import io.restassured.mapper.factory.Jackson2ObjectMapperFactory;
 import io.restassured.parsing.Parser;
 import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
@@ -47,7 +42,7 @@ public class TimingsFacade {
     private static final String USERTIMING_PATH = "/v2/api/cicd/usertiming";
     private static final String APITIMING_PATH = "/v2/api/cicd/apitiming";
     private static final String RESOURCES_PATH = "/v2/api/cicd/resources";
-    
+
     private static final Boolean logRequests = TimingsClientConfig.logRequests();
     private static final Boolean logResponses = TimingsClientConfig.logResponses();
     private static final Boolean logErrors = TimingsClientConfig.logErrors();

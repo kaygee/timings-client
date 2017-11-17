@@ -89,7 +89,7 @@ public class TimingResponse {
 
     /**
      * https://github.com/godaddy/timings#estrace-output
-     *
+     * <p>
      * TODO: This had to be renamed to match even with the @JsonProperty set.
      *
      * @return elasticsearch trace output.
