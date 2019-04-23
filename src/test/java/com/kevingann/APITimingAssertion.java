@@ -21,8 +21,6 @@ public class APITimingAssertion {
 
     @Test
     public void canBeObtained() {
-        // @formatter:off
-
         Timing timing = new Timing
                 .Builder()
                 .startTime(1474997676867L)
@@ -70,8 +68,6 @@ public class APITimingAssertion {
                 .flags(flags)
                 .log(log)
                 .build();
-
-        // @formatter:on
 
         TimingsFacade timingsFacade = new TimingsFacade();
         APITimingResponse apiTimingResponse = timingsFacade.getAPITiming(apiTimingRequest);

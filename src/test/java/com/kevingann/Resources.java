@@ -13,11 +13,8 @@ public class Resources {
 
     @Test
     public void canBeObtained() {
-        // @formatter:off
-
         ResourcesRequest resourcesRequest = new ResourcesRequest();
         resourcesRequest.setId("944f735e-0214-4e0d-8b3b-9fef0f4cadc3");
-        // @formatter:on
 
         TimingsFacade timingsFacade = new TimingsFacade();
         ResourcesResponse resourcesResponse = timingsFacade.getResources(resourcesRequest);

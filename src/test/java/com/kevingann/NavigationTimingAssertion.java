@@ -23,8 +23,6 @@ public class NavigationTimingAssertion {
 
     @Test
     public void canBeObtained() {
-        // @formatter:off
-
         Timing timing = new Timing
                 .Builder()
                 .navigationStart(1496339132056L)
@@ -127,8 +125,6 @@ public class NavigationTimingAssertion {
                 .log(log)
                 .build();
 
-        // @formatter:on
-
         TimingsFacade timingsFacade = new TimingsFacade();
         NavigationTimingResponse navigationTimingResponse = timingsFacade.getNavigationTiming(navigationTimingRequest);
     }
@@ -139,8 +135,6 @@ public class NavigationTimingAssertion {
      */
     @Test
     public void canUseMinimumRequiredFields() {
-        // @formatter:off
-
         Timing timing = new Timing
                 .Builder()
                 .navigationStart(1496339132056L)
@@ -223,8 +217,6 @@ public class NavigationTimingAssertion {
                 .serviceLevelAgreement(sla)
                 .log(log)
                 .build();
-
-        // @formatter:on
 
         TimingsFacade timingsFacade = new TimingsFacade();
         NavigationTimingResponse navigationTimingResponse = timingsFacade.getNavigationTiming(navigationTimingRequest);

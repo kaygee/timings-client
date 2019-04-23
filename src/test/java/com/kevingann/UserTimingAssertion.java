@@ -19,85 +19,81 @@ import java.util.Map;
 
 public class UserTimingAssertion {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserTimingAssertion.class);
+  private static final Logger LOG = LoggerFactory.getLogger(UserTimingAssertion.class);
 
-    @Test
-    public void canBeObtained() {
-        // @formatter:off
+  @Test
+  public void canBeObtained() {
+    Measure measure =
+        new Measure.Builder()
+            .name("test")
+            .entryType("measure")
+            .startTime(236377.80000000002)
+            .duration(5345.174999999988)
+            .build();
 
-        Measure measure = new Measure
-                .Builder()
-                .name("test")
-                .entryType("measure")
-                .startTime(236377.80000000002)
-                .duration(5345.174999999988)
-                .build();
+    Measure[] measures = {measure};
 
-        Measure[] measures = {measure};
+    Mark mark =
+        new Mark.Builder()
+            .name("test_start")
+            .entryType("mark")
+            .startTime(236377.80000000002)
+            .duration(0.0)
+            .build();
 
-        Mark mark = new Mark
-                .Builder()
-                .name("test_start")
-                .entryType("mark")
-                .startTime(236377.80000000002)
-                .duration(0.0)
-                .build();
+    Mark[] marks = {mark};
 
-        Mark[] marks = {mark};
+    InjectJS injectJS =
+        new InjectJS.Builder()
+            .time(1496339132056L)
+            .measures(measures)
+            .url("http://www.example.com/")
+            .marks(marks)
+            .build();
 
-        InjectJS injectJS = new InjectJS
-                .Builder()
-                .time(1496339132056L)
-                .measures(measures)
-                .url("http://www.example.com/")
-                .marks(marks)
-                .build();
+    ServiceLevelAgreement sla = new ServiceLevelAgreement();
+    sla.setPageLoadTime(4000L);
 
-        ServiceLevelAgreement sla = new ServiceLevelAgreement();
-        sla.setPageLoadTime(4000L);
+    Map<String, String> include = new HashMap<>();
+    include.put("env_tester", "_log_");
 
-        Map<String, String> include = new HashMap<>();
-        include.put("env_tester", "_log_");
+    Baseline baseline =
+        new Baseline.Builder()
+            .days(7)
+            .percent(75)
+            .padding(1.2)
+            .searchUrl("http://www.google.com")
+            .incl(include)
+            .build();
 
-        Baseline baseline = new Baseline.
-                Builder()
-                .days(7)
-                .percent(75)
-                .padding(1.2)
-                .searchUrl("http://www.google.com")
-                .incl(include)
-                .build();
+    Flags flags =
+        new Flags.Builder()
+            .debug(false)
+            .esTrace(false)
+            .esCreate(false)
+            .passOnFailedAssert(false)
+            .build();
 
-        Flags flags = new Flags
-                .Builder()
-                .debug(false)
-                .esTrace(false)
-                .esCreate(false)
-                .passOnFailedAssert(false)
-                .build();
+    Log log =
+        new Log.Builder()
+            .team("perfeng")
+            .testInfo("V2 - Test App (usertiming)")
+            .environmentTester("chromeEmulator")
+            .browser("Chrome")
+            .environmentTarget("prod")
+            .build();
 
-        Log log = new Log.
-                Builder()
-                .team("perfeng")
-                .testInfo("V2 - Test App (usertiming)")
-                .environmentTester("chromeEmulator")
-                .browser("Chrome")
-                .environmentTarget("prod")
-                .build();
+    UserTimingRequest userTimingRequest =
+        new UserTimingRequest.Builder()
+            .injectJS(injectJS)
+            .serviceLevelAgreement(sla)
+            .baseline(baseline)
+            .flags(flags)
+            .log(log)
+            .build();
 
-        UserTimingRequest userTimingRequest = new UserTimingRequest
-                .Builder()
-                .injectJS(injectJS)
-                .serviceLevelAgreement(sla)
-                .baseline(baseline)
-                .flags(flags)
-                .log(log)
-                .build();
-
-        // @formatter:on
-
-        TimingsFacade timingsFacade = new TimingsFacade();
-        UserTimingResponse userTimingResponse = timingsFacade.getUserTiming(userTimingRequest);
-        LOG.info(userTimingResponse.toString());
-    }
+    TimingsFacade timingsFacade = new TimingsFacade();
+    UserTimingResponse userTimingResponse = timingsFacade.getUserTiming(userTimingRequest);
+    LOG.info(userTimingResponse.toString());
+  }
 }

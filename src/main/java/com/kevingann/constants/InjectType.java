@@ -1,21 +1,17 @@
 package com.kevingann.constants;
 
 public enum InjectType {
+  USER_TIMING("usertiming"),
+  NAV_TIMING("navtiming");
 
-    // @formatter:off
-    USER_TIMING("usertiming"),
-    NAV_TIMING("navtiming");
+  private final String val;
 
-    // @formatter:on
+  InjectType(String val) {
+    this.val = val;
+  }
 
-    private final String val;
-
-    InjectType(String val) {
-        this.val = val;
-    }
-
-    @Override
-    public String toString() {
-        return val;
-    }
+  @Override
+  public String toString() {
+    return val;
+  }
 }
