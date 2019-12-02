@@ -7,51 +7,62 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class ResourcesResponse {
 
-    @JsonProperty("status")
-    private Integer status;
+  @JsonProperty("kibana_rename")
+  private String kibanaRename;
 
-    @JsonProperty("kibana_host")
-    private String kibanaHost;
+  @JsonProperty("status")
+  private Integer status;
 
-    @JsonProperty("kibana_port")
-    private Integer kibanaPort;
+  @JsonProperty("kibana_host")
+  private String kibanaHost;
 
-    @JsonProperty("resources")
-    private Resource[] resources;
+  @JsonProperty("kibana_port")
+  private Integer kibanaPort;
 
-    public Integer getStatus() {
-        return status;
-    }
+  @JsonProperty("resources")
+  private Resource[] resources;
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+  public Integer getStatus() {
+    return status;
+  }
 
-    public Resource[] getResources() {
-        return resources;
-    }
+  public void setStatus(Integer status) {
+    this.status = status;
+  }
 
-    public void setResources(Resource[] resources) {
-        this.resources = resources;
-    }
+  public Resource[] getResources() {
+    return resources;
+  }
 
-    public String getKibanaHost() {
-        return kibanaHost;
-    }
+  public void setResources(Resource[] resources) {
+    this.resources = resources;
+  }
 
-    public void setKibanaHost(String kibanaHost) {
-        this.kibanaHost = kibanaHost;
-    }
+  public String getKibanaHost() {
+    return kibanaHost;
+  }
 
-    public Integer getKibanaPort() {
-        return kibanaPort;
-    }
+  public void setKibanaHost(String kibanaHost) {
+    this.kibanaHost = kibanaHost;
+  }
 
-    public void setKibanaPort(Integer kibanaPort) {
-        this.kibanaPort = kibanaPort;
-    }
+  public Integer getKibanaPort() {
+    return kibanaPort;
+  }
 
-    public String toString() {
-        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
-    }
+  public void setKibanaPort(Integer kibanaPort) {
+    this.kibanaPort = kibanaPort;
+  }
+
+  public String getKibanaRename() {
+    return kibanaRename;
+  }
+
+  public void setKibanaRename(String kibanaRename) {
+    this.kibanaRename = kibanaRename;
+  }
+
+  public String toString() {
+    return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
+  }
 }

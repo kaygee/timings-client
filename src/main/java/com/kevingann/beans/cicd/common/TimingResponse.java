@@ -7,118 +7,129 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class TimingResponse {
 
-    @JsonProperty("resourceSaved")
-    private Boolean resourceSaved;
+  @JsonProperty("route")
+  private String route;
 
-    @JsonProperty("esSaved")
-    private Boolean elasticSearchSaved;
+  @JsonProperty("resourceSaved")
+  private Boolean resourceSaved;
 
-    @JsonProperty("esIndex")
-    private String elasticSearchIndex;
+  @JsonProperty("esSaved")
+  private Boolean elasticSearchSaved;
 
-    @JsonProperty("esServer")
-    private String elasticSearchServer;
+  @JsonProperty("esIndex")
+  private String elasticSearchIndex;
 
-    @JsonProperty("api_version")
-    private String apiVersion;
+  @JsonProperty("esServer")
+  private String elasticSearchServer;
 
-    @JsonProperty("status")
-    private int status;
+  @JsonProperty("api_version")
+  private String apiVersion;
 
-    @JsonProperty("took")
-    private long took;
+  @JsonProperty("status")
+  private int status;
 
-    @JsonProperty("assert")
-    private Boolean assertion;
+  @JsonProperty("took")
+  private long took;
 
-    @JsonIgnore
-    @JsonProperty("errorMsg")
-    private String errorMessage;
+  @JsonProperty("assert")
+  private Boolean assertion;
 
-    @JsonIgnore
-    @JsonProperty("debugMsg")
-    private String debugMessage;
+  @JsonIgnore
+  @JsonProperty("errorMsg")
+  private String errorMessage;
 
-    @JsonIgnore
-    @JsonProperty("export")
-    private String export;
+  @JsonIgnore
+  @JsonProperty("debugMsg")
+  private String debugMessage;
 
-    @JsonIgnore
-    @JsonProperty("params")
-    private String parameters;
+  @JsonIgnore
+  @JsonProperty("export")
+  private String export;
 
-    @JsonIgnore
-    @JsonProperty("timeingInfo")
-    private String timingInformation;
+  @JsonIgnore
+  @JsonProperty("params")
+  private String parameters;
 
-    @JsonIgnore
-    @JsonProperty("esTrace")
-    private String esTrace;
+  @JsonIgnore
+  @JsonProperty("timeingInfo")
+  private String timingInformation;
 
-    public int getStatus() {
-        return status;
-    }
+  @JsonIgnore
+  @JsonProperty("esTrace")
+  private String esTrace;
 
-    public long getTook() {
-        return took;
-    }
+  public int getStatus() {
+    return status;
+  }
 
-    public Boolean isAssertion() {
-        return assertion;
-    }
+  public long getTook() {
+    return took;
+  }
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
+  public Boolean isAssertion() {
+    return assertion;
+  }
 
-    public String getDebugMessage() {
-        return debugMessage;
-    }
+  public String getErrorMessage() {
+    return errorMessage;
+  }
 
-    public String getExport() {
-        return export;
-    }
+  public String getDebugMessage() {
+    return debugMessage;
+  }
 
-    public String getParameters() {
-        return parameters;
-    }
+  public String getExport() {
+    return export;
+  }
 
-    public String getTimingInformation() {
-        return timingInformation;
-    }
+  public String getParameters() {
+    return parameters;
+  }
 
-    /**
-     * https://github.com/godaddy/timings#estrace-output
-     * <p>
-     * TODO: This had to be renamed to match even with the @JsonProperty set.
-     *
-     * @return elasticsearch trace output.
-     */
-    public String getEsTrace() {
-        return esTrace;
-    }
+  public String getTimingInformation() {
+    return timingInformation;
+  }
 
-    public String getApiVersion() {
-        return apiVersion;
-    }
+  /**
+   * https://github.com/godaddy/timings#estrace-output
+   *
+   * <p>TODO: This had to be renamed to match even with the @JsonProperty set.
+   *
+   * @return elasticsearch trace output.
+   */
+  public String getEsTrace() {
+    return esTrace;
+  }
 
-    public String getElasticSearchServer() {
-        return elasticSearchServer;
-    }
+  public String getApiVersion() {
+    return apiVersion;
+  }
 
-    public Boolean isResourceSaved() {
-        return resourceSaved;
-    }
+  public String getElasticSearchServer() {
+    return elasticSearchServer;
+  }
 
-    public Boolean isElasticSearchSaved() {
-        return elasticSearchSaved;
-    }
+  public Boolean isResourceSaved() {
+    return resourceSaved;
+  }
 
-    public String getElasticSearchIndex() {
-        return elasticSearchIndex;
-    }
+  public Boolean isElasticSearchSaved() {
+    return elasticSearchSaved;
+  }
 
-    public String toString() {
-        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
-    }
+  public String getElasticSearchIndex() {
+    return elasticSearchIndex;
+  }
+
+  public String getRoute() {
+    return route;
+  }
+
+  public void setRoute(String route) {
+    this.route = route;
+  }
+
+  public String toString() {
+    return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
+  }
 }
