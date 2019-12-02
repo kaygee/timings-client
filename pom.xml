@@ -4,7 +4,7 @@
     <groupId>com.kevingann</groupId>
     <artifactId>timings-client</artifactId>
     <packaging>jar</packaging>
-    <version>0.8</version>
+    <version>0.9</version>
     <name>timings-client</name>
     <url>https://github.com/kaygee/timings-client</url>
     <description>Project that provides an API and methods for the https://github.com/godaddy/timings project.
@@ -65,7 +65,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>

@@ -21,7 +21,7 @@ This is a Java client for the [GoDaddy/timings](https://github.com/godaddy/timin
 <dependency>
     <groupId>com.kevingann</groupId>
     <artifactId>timings-client</artifactId>
-    <version>0.8</version>
+    <version>0.9</version>
 </dependency>
 ```
 
