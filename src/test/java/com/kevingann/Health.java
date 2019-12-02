@@ -8,13 +8,13 @@ import org.slf4j.LoggerFactory;
 
 public class Health {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Health.class);
+  private static final Logger LOG = LoggerFactory.getLogger(Health.class);
 
-    @Test
-    public void canBeObtained() {
-        TimingsFacade timingsFacade = new TimingsFacade();
+  @Test
+  public void canBeObtained() {
+    TimingsFacade timingsFacade = new TimingsFacade();
 
-        HealthStatus healthStatus = timingsFacade.getHealth();
-        LOG.info(healthStatus.toString());
-    }
+    HealthStatus healthStatus = timingsFacade.getHealth();
+    LOG.info(healthStatus.toString());
+  }
 }

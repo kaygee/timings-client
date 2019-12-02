@@ -17,60 +17,56 @@ import java.util.Map;
 
 public class APITimingAssertion {
 
-    private static final Logger LOG = LoggerFactory.getLogger(APITimingAssertion.class);
+  private static final Logger LOG = LoggerFactory.getLogger(APITimingAssertion.class);
 
-    @Test
-    public void canBeObtained() {
-        Timing timing = new Timing
-                .Builder()
-                .startTime(1474997676867L)
-                .endTime(1474997676905L)
-                .build();
+  @Test
+  public void canBeObtained() {
+    Timing timing = new Timing.Builder().startTime(1474997676867L).endTime(1474997676905L).build();
 
-        Flags flags = new Flags
-                .Builder()
-                .debug(false)
-                .esTrace(false)
-                .esCreate(false)
-                .passOnFailedAssert(false)
-                .build();
+    Flags flags =
+        new Flags.Builder()
+            .debug(false)
+            .esTrace(false)
+            .esCreate(false)
+            .passOnFailedAssert(false)
+            .build();
 
-        ServiceLevelAgreement sla = new ServiceLevelAgreement();
-        sla.setPageLoadTime(4000L);
+    ServiceLevelAgreement sla = new ServiceLevelAgreement();
+    sla.setPageLoadTime(4000L);
 
-        Map<String, String> include = new HashMap<>();
-        include.put("env_tester", "_log_");
+    Map<String, String> include = new HashMap<>();
+    include.put("env_tester", "_log_");
 
-        Baseline baseline = new Baseline.
-                Builder()
-                .days(7)
-                .percent(75)
-                .padding(1.2)
-                .searchUrl("http://www.google.com")
-                .incl(include)
-                .build();
+    Baseline baseline =
+        new Baseline.Builder()
+            .days(7)
+            .percent(75)
+            .padding(1.2)
+            .searchUrl("http://www.google.com")
+            .incl(include)
+            .build();
 
-        Log log = new Log.
-                Builder()
-                .team("perfeng")
-                .testInfo("V2 - Test App (apitiming)")
-                .environmentTester("linux")
-                .browser("api_call")
-                .environmentTarget("prod")
-                .build();
+    Log log =
+        new Log.Builder()
+            .team("perfeng")
+            .testInfo("V2 - Test App (apitiming)")
+            .environmentTester("linux")
+            .browser("api_call")
+            .environmentTarget("prod")
+            .build();
 
-        APITimingRequest apiTimingRequest = new APITimingRequest
-                .Builder()
-                .timing(timing)
-                .url("https://api.example.com")
-                .serviceLevelAgreement(sla)
-                .baseline(baseline)
-                .flags(flags)
-                .log(log)
-                .build();
+    APITimingRequest apiTimingRequest =
+        new APITimingRequest.Builder()
+            .timing(timing)
+            .url("https://api.example.com")
+            .serviceLevelAgreement(sla)
+            .baseline(baseline)
+            .flags(flags)
+            .log(log)
+            .build();
 
-        TimingsFacade timingsFacade = new TimingsFacade();
-        APITimingResponse apiTimingResponse = timingsFacade.getAPITiming(apiTimingRequest);
-        LOG.info(apiTimingResponse.toString());
-    }
+    TimingsFacade timingsFacade = new TimingsFacade();
+    APITimingResponse apiTimingResponse = timingsFacade.getAPITiming(apiTimingRequest);
+    LOG.info(apiTimingResponse.toString());
+  }
 }

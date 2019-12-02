@@ -12,19 +12,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class InjectJS {
 
-    private static final Logger LOG = LoggerFactory.getLogger(InjectJS.class);
+  private static final Logger LOG = LoggerFactory.getLogger(InjectJS.class);
 
-    @Test
-    public void canBeObtained() {
-        TimingsFacade timingsFacade = new TimingsFacade();
+  @Test
+  public void canBeObtained() {
+    TimingsFacade timingsFacade = new TimingsFacade();
 
-        InjectJSRequest injectJSRequest = new InjectJSRequest();
-        injectJSRequest.setInjectType(InjectType.NAV_TIMING);
-        injectJSRequest.setVisualCompleteMark("initialPageLoad");
+    InjectJSRequest injectJSRequest = new InjectJSRequest();
+    injectJSRequest.setInjectType(InjectType.NAV_TIMING);
+    injectJSRequest.setVisualCompleteMark("initialPageLoad");
 
-        InjectJSResponse injectJs = timingsFacade.getInjectJs(injectJSRequest);
-        assertThat(injectJs.getStatus()).isEqualTo(200);
-        assertThat(injectJs.getInjectCode()).isNotEmpty();
-        LOG.info(injectJs.toString());
-    }
+    InjectJSResponse injectJs = timingsFacade.getInjectJs(injectJSRequest);
+    assertThat(injectJs.getStatus()).isEqualTo(200);
+    assertThat(injectJs.getInjectCode()).isNotEmpty();
+    LOG.info(injectJs.toString());
+  }
 }

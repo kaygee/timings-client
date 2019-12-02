@@ -1,4 +1,3 @@
 package com.kevingann.beans.cicd.common;
 
-public class ToJSON {
-}
+public class ToJSON {}
