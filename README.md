@@ -15,7 +15,7 @@ This is a Java client for the [GoDaddy/timings](https://github.com/godaddy/timin
 ## Including in a Java Project
 - Build it locally using `mvn package`.
 - Publish it to your local Maven repository using [this](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html).
--- Example: `mvn install:install-file -Dfile=./target/timings-client-1.0-SNAPSHOT.jar -DpomFile=pom.xml`
+    - Example: `mvn install:install-file -Dfile=./target/timings-client-1.0-SNAPSHOT.jar -DpomFile=pom.xml`
 - Or you can add the dependency to your Maven POM.
 ```xml
 <dependency>
