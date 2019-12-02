@@ -6,10 +6,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Kibana {
 
-    @JsonProperty("HOST")
+    @JsonProperty("KB_HOST")
     private String host;
 
-    @JsonProperty("PORT")
+    @JsonProperty("KB_PORT")
     private String port;
 
     public String getHost() {

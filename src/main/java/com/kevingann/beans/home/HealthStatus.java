@@ -6,40 +6,51 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class HealthStatus {
 
-    @JsonProperty("server")
-    private Server server;
+  @JsonProperty("server")
+  private Server server;
 
-    @JsonProperty("es")
-    private Elasticsearch elasticsearch;
+  @JsonProperty("es")
+  private Elasticsearch elasticsearch;
 
-    @JsonProperty("kibana")
-    private Kibana kibana;
+  @JsonProperty("kibana")
+  private Kibana kibana;
 
-    public Server getServer() {
-        return server;
-    }
+  @JsonProperty("system")
+  private System system;
 
-    public void setServer(Server server) {
-        this.server = server;
-    }
+  public Server getServer() {
+    return server;
+  }
 
-    public Elasticsearch getElasticsearch() {
-        return elasticsearch;
-    }
+  public void setServer(Server server) {
+    this.server = server;
+  }
 
-    public void setElasticsearch(Elasticsearch elasticsearch) {
-        this.elasticsearch = elasticsearch;
-    }
+  public Elasticsearch getElasticsearch() {
+    return elasticsearch;
+  }
 
-    public Kibana getKibana() {
-        return kibana;
-    }
+  public void setElasticsearch(Elasticsearch elasticsearch) {
+    this.elasticsearch = elasticsearch;
+  }
 
-    public void setKibana(Kibana kibana) {
-        this.kibana = kibana;
-    }
+  public Kibana getKibana() {
+    return kibana;
+  }
 
-    public String toString() {
-        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
-    }
+  public void setKibana(Kibana kibana) {
+    this.kibana = kibana;
+  }
+
+  public System getSystem() {
+    return system;
+  }
+
+  public void setSystem(System system) {
+    this.system = system;
+  }
+
+  public String toString() {
+    return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
+  }
 }
