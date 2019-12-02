@@ -48,3 +48,9 @@ var visualCompleteTime = 0;
 ## NavigationTimingResponse Object
 
 Refer to [Web Performance API](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) to understand the data being returned.
+
+## Release Errors
+
+### gpg: signing failed: No secret key
+- `mvn clean deploy` fails with the error message "gpg: signing failed: No secret key".
+- See [this](https://stackoverflow.com/questions/29885887/gpg-no-default-secret-key-error-using-maven) article that describes how to update an expired gpg key.
